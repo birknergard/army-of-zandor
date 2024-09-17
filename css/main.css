@@ -1,0 +1,14 @@
+/*
+    main.css is the usual name for a CSS which will be used on all/most pages.
+*/
+/* Styling for "getting-resources.html" */
+.getting-resources{
+    .nav-bar{
+        
+    }
+    .icons{
+        .resource_icon{
+            width: 50px;
+        }
+    }
+}
