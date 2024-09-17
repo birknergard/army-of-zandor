@@ -11,12 +11,12 @@
 /* Variables */
 :root{
     --header-color : #292929;
-    --header-horizontal-padding: 20px;    
+    --header-horizontal-padding: 40px;    
     --header-vertical-padding: 10px;
 }
 
 /* Styling for Navigation-bar / Header */
-.nav-bar{
+.header{
         position: fixed;
         top: 0;
         width: 100%;
@@ -25,23 +25,34 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+
         padding-left: var(--header-side-padding);
         padding-right: var(--header-side-padding);
+        padding-top: var(--header-vertical-padding);
+        padding-bottom: var(--header-vertical-padding);
+
         background-color: var(--header-color);
-        .nav-bar_title{
+
+        .title{
+            margin-left: 20px;
             color: white;
         }
-    }
-    
-/* Styling for "getting-resources.html" */
-.resources_main{
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-between;
-    padding-top: 50px;
 
-    .icons{
+        .nav-bar{
+           margin-right: 20px;
+           
+           .nav-bar_button{
+            color: white;
+            font-size: 16px;
+            padding-left: var(--header-vertical-padding);
+            padding-right: var(--header-vertical-padding);
+            text-decoration: none;
+           }
+        }
+    }
+
+/* Resource display */
+.icons{
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -66,7 +77,14 @@
                 font-size: 20px;
             }
         }
-    }
+}
+/* Styling for "getting-resources.html" */
+.resources_main{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    padding-top: 50px;
 
     .places{
         display: flex;
@@ -80,4 +98,9 @@
             margin: 20px;
         }
     }
+}
+
+/* Shop */
+.shop{
+
 }
