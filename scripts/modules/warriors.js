@@ -36,5 +36,11 @@ export const Warriors = {
         if(localStorage.getItem('warriors') === null){
             localStorage.setItem('warriors', JSON.stringify(Warriors.list))
         }
-    }
+    },
+
+    fetchListFromLocalStorage: () => {
+        if(localStorage.getItem('warriors') !== null) {
+            return JSON.parse(localStorage.getItem('warriors'))
+        }
+    }    
 }
