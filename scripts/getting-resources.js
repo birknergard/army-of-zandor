@@ -1,5 +1,8 @@
+import Random from './modules/random.js'
+
 const mines = document.querySelector('#mines-image');
 const woods = document.querySelector('#woods-image')
+
 
 
 const generateResource = (resource, amount) => {
@@ -15,5 +18,16 @@ const generateResource = (resource, amount) => {
 } 
 
 woods.addEventListener("click", () => {
-    generateResource('wood', 25)
+    generateResource('wood', Random.range(20, 75))
 })
+
+mines.addEventListener("click", () => {
+    let randomNumber = Random.range(1, 4)
+    console.log(randomNumber)
+        if(randomNumber === 1) {
+           generateResource('gold', 25) 
+        } else {
+            generateResource('metal', 25)
+        }
+    }
+)
