@@ -1,4 +1,4 @@
-import Random from './modules/random.js'
+import Random from './utilities/random'
 
 const mines = document.querySelector('#mines-image');
 const woods = document.querySelector('#woods-image')

@@ -1,12 +1,13 @@
-const warriorsGrid = document.querySelector('.warriors_grid')
+import { Warriors } from "./modules/warriors.js";
 
+document.addEventListener("DOMContentLoaded", () => Warriors.uploadToLocalStorage());
 
-const warriors = [
-    {
-        
-    },
-]
+const warriorsGrid = document.querySelector('.warriors_grid');
 
-const saveWarriorInfo = () => {
+const fetchListOfWarriors = () => {
+    
+}
+
+const displayWarriors = () => {
 
 }
