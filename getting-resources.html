@@ -7,24 +7,34 @@
     <script defer src="scripts/getting-resources.js" type="module"></script>
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body class="getting-resources">
+<body>
     <header class="nav-bar">
         <h1 class="nav-bar_title">Armies of Zondor</h1>
-        <input class="nav-bar_button" type="button" value="Hjem" href="gathering-army.html">
-        <input class="nav-bar_button" type="button" value="Få ressurser" href="getting-resources.html">
-        <input class="nav-bar_button" type="button" value="Din hær" href="your-army.html">
-    </header>
-    <main>
+        <div class="nav-bar_button_container">
+            <input class="nav-bar_button" type="button" value="Hjem" href="gathering-army.html">
+            <input class="nav-bar_button" type="button" value="Få ressurser" href="getting-resources.html">
+            <input class="nav-bar_button" type="button" value="Din hær" href="your-army.html">
+        </div>
+   </header>
+    <main class="resources_main">
         <section class="icons">
-            <img id="gold-coin_icon" class="resource_icon" src="images/gold-coin.png" alt="gold icon">
-            <p id="gold-coin_count" class="resource-count-text">0</p>
-                
-            <img class="resource_icon" src="images/wood.png" alt="wood icon">
-            <p id="wood_count">0</p>
+            <div class="icon_container">
+                <img class="resource_icon" src="images/metal.png" alt="metal icon">
+                <p id="metal_count" class="resource_count_text">0</p>   
+            </div>
 
-            <img class="resource_icon" src="images/metal.png" alt="metal icon">
-            <p id="metal_count">0</p>
+            <div class="icon_container">
+                <img id="gold-coin_icon" class="resource_icon" src="images/gold-coin.png" alt="gold icon">
+                <p id="gold-coin_count" class="resource_count_text">0</p>
+            </div>
+
+            <div class="icon_container">
+                <img class="resource_icon" src="images/wood.png" alt="wood icon">
+                <p id="wood_count" class="resource_count_text">0</p>
+            </div>
+              
         </section>
+
         <section class="places">
             <img id="mines-image" class="resource_image mines" src="images/mines-of-thiartha.jpg">
             <img id="woods-image" class="resource_image woods" src="images/woods-of-ghalduz.png">
