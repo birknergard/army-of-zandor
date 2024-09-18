@@ -1,5 +1,6 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
+import { updateCountDisplay } from "./utilities/resource-display.js";
 
 const warriorsGrid = document.querySelector('.warriors_grid');
 const animalsGrid = document.querySelector('.animals_grid')
@@ -47,10 +48,31 @@ const displayOther = () => {
     const listOfMachines = Other.fetchMachinesFromLocalStorage();
     machinesGrid.innerHTML += "";
     listOfMachines.forEach(machine => {
-        
+        machinesGrid.innerHTML += `
+        <figure class="machine_item">
+            <h2>${machine.name}</h2>
+            <img class="machine_image" src=${machine.image} alt="image of machine">
+            <button>
+                <div class="icon_container">
+                    <p class="resource_count_text">${machine.price.gold}</p>
+                    <img class="resource_icon" src="images/gold-coin.png">
+                    <p class="resource_count_text">${machine.price.metal}</p>
+                    <img class="resource_icon" src="images/metal.png">
+                    <p class="resource_count_text">${machine.price.wood}</p>
+                    <img class="resource_icon" src="images/wood.png">
+                </div>
+            </button>
+        </figure>
+        `        
     })
 }
+
 document.addEventListener("DOMContentLoaded", () => {
+    updateCountDisplay('wood');
+    updateCountDisplay('metal')
+    updateCountDisplay('gold')
+
+
     Warriors.uploadToLocalStorage();
     displayWarriors();
 
