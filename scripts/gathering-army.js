@@ -1,10 +1,17 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
-import { updateCountDisplay } from "./utilities/resource-display.js";
+import { updateCountDisplay, subtractResource, Inventory } from "./utilities/data.js";
+
+const woodCounter = document.querySelector('#wood_count')
+const metalCounter = document.querySelector('#metal_count')
+const goldCounter = document.querySelector('#gold-coin_count')
+const listOfResourceElements = [woodCounter, metalCounter, goldCounter]
 
 const warriorsGrid = document.querySelector('.warriors_grid');
 const animalsGrid = document.querySelector('.animals_grid')
 const machinesGrid = document.querySelector('.machines_grid')
+
+
 
 const displayWarriors = () => {
     const listOfWarriors = Warriors.fetchFromLocalStorage();
@@ -16,7 +23,7 @@ const displayWarriors = () => {
             <figure class="warrior_item">
                 <h2 class="warrior_name">${warrior.categoryName}</h2>  
                 <img class="warrior_image" src=${warrior.image} alt="image of warrior"> 
-                <button>
+                <button onclick="${}">
                     <div class="icon_container">
                         <p class="resource_count_text">${warrior.priceGold}</p>
                         <img id="gold-coin_icon" class="resource_icon" src="images/gold-coin.png" alt="gold icon">
@@ -68,14 +75,11 @@ const displayOther = () => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    updateCountDisplay('wood');
-    updateCountDisplay('metal')
-    updateCountDisplay('gold')
-
+    updateCountDisplay(listOfResourceElements);
 
     Warriors.uploadToLocalStorage();
     displayWarriors();
 
     Other.uploadToLocalStorage();
-    displayOther()
+    displayOther();
 })  
