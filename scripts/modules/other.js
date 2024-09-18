@@ -1,7 +1,5 @@
 import { Data } from '../utilities/data.js'
-
-export const Other = {
-    animals: [{
+const animals= [{
         name: "War-elephant",
         priceGold: 400,
         image: '../images/elephant.png'
@@ -9,11 +7,11 @@ export const Other = {
     {
         name: "Horse",
         priceGold: 200,
-        image: '../images/elephant.png'
+        image: '../images/horse.png'
     }
-    ],
+    ];
 
-    machines: [{
+const machines = [{
         name: "Catapult",
         price: {
             gold: 150,
@@ -31,16 +29,25 @@ export const Other = {
         },
         image: '../images/cannon.png'
         }
-    ],
+    ];
 
-    joinedList: () => {[this.animals, this.machines]},
+const joinedList = [animals, machines];
+
+const Other = {
     
     uploadToLocalStorage: () => {
         Data.uploadToLocalStorage(joinedList, 'other');
     },
 
-   fetchFromLocalStorage: () => {
+   fetchAnimalsFromLocalStorage: () => {
         const list = Data.fetchListFromLocalStorage('other');
-   }
+        return list[0];
+   },
 
+   fetchMachinesFromLocalStorage: () => {
+        const list = Data.fetchListFromLocalStorage('other');
+        return list[1];
+   }
 }
+
+export default Other;
