@@ -33,15 +33,14 @@ export const Other = {
         }
     ],
 
-
-    joinedList: [animals, machines],
+    joinedList: () => {[this.animals, this.machines]},
     
     uploadToLocalStorage: () => {
-        Data.uploadToLocalStorage(joinedList, 'other')
+        Data.uploadToLocalStorage(joinedList, 'other');
     },
 
    fetchFromLocalStorage: () => {
-        Data.fetchListFromLocalStorage('other')
+        const list = Data.fetchListFromLocalStorage('other');
    }
 
 }

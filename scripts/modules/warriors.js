@@ -1,7 +1,5 @@
 import { Data } from '../utilities/data.js'
-
-export const Warriors = {
-    list: [
+const list = [
         {
             categoryName: "Lass",
             priceGold: 150,
@@ -32,13 +30,16 @@ export const Warriors = {
             priceGold: 350,
             image: '../images/warrior-6.jpg'
         }
-    ],
-    
+]
+
+const Warriors = {
     uploadToLocalStorage: () => {
         Data.uploadToLocalStorage(list, 'warriors')
     },
 
-    fetchListFromLocalStorage: () => {
-        Data.fetchListFromLocalStorage('warriors')
+    fetchFromLocalStorage: () => {
+        return Data.fetchListFromLocalStorage('warriors');
     }    
 }
+
+export default Warriors;

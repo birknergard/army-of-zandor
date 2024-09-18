@@ -1,9 +1,12 @@
-import { Warriors } from "./modules/warriors.js";
+import Warriors from "./modules/warriors.js";
+import { Other } from './modules/other.js'
 
 const warriorsGrid = document.querySelector('.warriors_grid');
+const animalsGrid = document.querySelector('.animals_grid')
+const machinesGrid = document.querySelector('.machines_grid')
 
 const displayWarriors = () => {
-    const listOfWarriors = Warriors.fetchListFromLocalStorage();
+    const listOfWarriors = Warriors.fetchFromLocalStorage();
 
     warriorsGrid.innerHTML = "";
 
@@ -23,7 +26,29 @@ const displayWarriors = () => {
     });
 }
 
+const displayOther = () => {
+    const listOfOther = Other.fetchFromLocalStorage()
+    animalsGrid.innerHTML += ""; 
+    listOfOther.forEach(animal => {
+        `
+        <figure class="animal_item">
+            <h2>${animal.name}Animal</h2>
+            <img class="animal_image" src=${animal.image} alt="image of animal">
+            <button>
+                <div class="icon_container">
+                    <p class="resource_count_text">${animal.priceGold}</p>
+                    <img class="resource_icon" src="images/gold-coin.png">
+                </div>
+            </button>
+        </figure>
+        ` 
+    })
+
+}
 document.addEventListener("DOMContentLoaded", () => {
     Warriors.uploadToLocalStorage();
     displayWarriors();
+
+    Other.uploadToLocalStorage();
+    displayOther()
 })  

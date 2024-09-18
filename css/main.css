@@ -61,7 +61,7 @@
         align-items: center;
 
         margin-top: 100px;
-        margin-bottom: 100px;
+        margin-bottom: 50px;
         
         .icon_container{
             display: flex;
@@ -112,6 +112,11 @@
 
 /* Shop */
 .shop{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     .warriors_grid{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -119,7 +124,6 @@
         grid-auto-flow: column;
         grid-gap: 20px;
         
-        margin: 100px;
 
         .warrior_item{
             display: flex;
@@ -132,6 +136,28 @@
 
             .warrior_image{
                 height: 400px;
+            }
+        }
+    }
+
+    .animals_grid{
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: column;
+        grid-gap: 20px;
+
+        .animal_item{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+
+            border: 2px dotted black;
+            border-radius: 50px;
+
+            .animal_image{
+                height: 330px;
             }
         }
     }
