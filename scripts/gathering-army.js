@@ -46,7 +46,15 @@ const displayWarriors = () => {
 }
 
 // #TODO Buy animal/machine/other function here
-
+const buyAnimal = animal => {
+    const gold = JSON.parse(localStorage.getItem('gold'));
+    if(gold >= animal.price){
+        subtractResource('gold', animal.price)
+        Inventory.addToInventory(animal);
+        updateCountDisplay(listOfResourceElements)
+    }
+} 
+    
 const displayOther = () => {
     const listOfAnimals = Other.fetchAnimalsFromLocalStorage();
     animalsGrid.innerHTML += ""; 
@@ -66,7 +74,7 @@ const displayOther = () => {
     })
 
     listOfAnimals.forEach(animal => {
-        document.getElementById(`buy-${animal.name}`).addEventListener("click", () => {/*Create buyAnimal/BuyOthers function */})
+        document.getElementById(`buy-${animal.name}`).addEventListener("click", () => {buyAnimal(animal)})
     })
 
     const listOfMachines = Other.fetchMachinesFromLocalStorage();
