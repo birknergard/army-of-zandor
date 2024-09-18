@@ -1,3 +1,5 @@
+import { Data } from '../utilities/data.js'
+
 export const Warriors = {
     list: [
         {
@@ -31,16 +33,12 @@ export const Warriors = {
             image: '../images/warrior-6.jpg'
         }
     ],
-
+    
     uploadToLocalStorage: () => {
-        if(localStorage.getItem('warriors') === null){
-            localStorage.setItem('warriors', JSON.stringify(Warriors.list))
-        }
+        Data.uploadToLocalStorage(list, 'warriors')
     },
 
     fetchListFromLocalStorage: () => {
-        if(localStorage.getItem('warriors') !== null) {
-            return JSON.parse(localStorage.getItem('warriors'))
-        }
+        Data.fetchListFromLocalStorage('warriors')
     }    
 }

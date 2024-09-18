@@ -37,7 +37,6 @@ woods.addEventListener("click", () => {
     generateResource('wood', Random.range(20, 75))
     updateCountDisplay('wood')
 })
-// Lmao
 mines.addEventListener("click", () => {
     let randomNumber = Random.range(1, 4)
     console.log(randomNumber)
