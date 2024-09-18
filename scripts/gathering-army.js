@@ -48,13 +48,37 @@ const displayWarriors = () => {
 // #TODO Buy animal/machine/other function here
 const buyAnimal = animal => {
     const gold = JSON.parse(localStorage.getItem('gold'));
-    if(gold >= animal.price){
-        subtractResource('gold', animal.price)
+    if(gold >= animal.priceGold){
+        subtractResource('gold', animal.priceGold);
         Inventory.addToInventory(animal);
-        updateCountDisplay(listOfResourceElements)
+        updateCountDisplay(listOfResourceElements);
     }
 } 
     
+const buyMachine = machine => {
+    const resources = {
+        gold: JSON.parse(localStorage.getItem('gold')) >= machine.price.gold,
+        metal: JSON.parse(localStorage.getItem('metal')) >= machine.price.metal,
+        wood: JSON.parse(localStorage.getItem('wood')) >= machine.price.wood,
+
+        compareCostToResources: () => {
+            if( gold && metal && wood) {
+                return true; 
+            } else {
+                console.log("Not enough resources for purchase.")
+                return false;    
+            }
+        }
+    }
+    if(resources.compareCostToResources()){
+        subtractResource('gold', machine.price.gold); 
+        subtractResource('metal', machine.price.metal);
+        subtractResource('wood', machine,price.metal);
+
+        Inventory.addToInventory(machine);
+        updateCountDisplay(listOfResourceElements);
+    }
+}
 const displayOther = () => {
     const listOfAnimals = Other.fetchAnimalsFromLocalStorage();
     animalsGrid.innerHTML += ""; 
