@@ -46,7 +46,40 @@ const displayWarriors = () => {
 }
 
 // #TODO Buy animal/machine/other function here
+const buyAnimal = animal => {
+    const gold = JSON.parse(localStorage.getItem('gold'));
+    if(gold >= animal.priceGold){
+        subtractResource('gold', animal.priceGold);
+        Inventory.addToInventory(animal);
+        updateCountDisplay(listOfResourceElements);
+    }
+} 
+    
+const buyMachine = machine => {
+    const resources = {
+        gold: JSON.parse(localStorage.getItem('gold')) >= machine.price.gold,
+        metal: JSON.parse(localStorage.getItem('metal')) >= machine.price.metal,
+        wood: JSON.parse(localStorage.getItem('wood')) >= machine.price.wood,
 
+        compareCostToResources: () => {
+            if(resources.gold && resources.metal && resources.wood) {
+                return true; 
+            } else {
+                console.log("Not enough resources for purchase.")
+                return false;    
+            }
+        }
+    }
+
+    if(resources.compareCostToResources()){
+        subtractResource('gold', machine.price.gold); 
+        subtractResource('metal', machine.price.metal);
+        subtractResource('wood', machine.price.metal);
+
+        Inventory.addToInventory(machine);
+        updateCountDisplay(listOfResourceElements);
+    }
+}
 const displayOther = () => {
     const listOfAnimals = Other.fetchAnimalsFromLocalStorage();
     animalsGrid.innerHTML += ""; 
@@ -66,7 +99,7 @@ const displayOther = () => {
     })
 
     listOfAnimals.forEach(animal => {
-        document.getElementById(`buy-${animal.name}`).addEventListener("click", () => {/*Create buyAnimal/BuyOthers function */})
+        document.getElementById(`buy-${animal.name}`).addEventListener("click", () => {buyAnimal(animal)})
     })
 
     const listOfMachines = Other.fetchMachinesFromLocalStorage();
@@ -76,18 +109,24 @@ const displayOther = () => {
         <figure class="machine_item">
             <h2>${machine.name}</h2>
             <img class="machine_image" src=${machine.image} alt="image of machine">
-            <button>
+            <button id="buy-${machine.name}">
                 <div class="icon_container">
-                    <p class="resource_count_text">${machine.price.gold}</p>
-                    <img class="resource_icon" src="images/gold-coin.png">
                     <p class="resource_count_text">${machine.price.metal}</p>
                     <img class="resource_icon" src="images/metal.png">
+
+                    <p class="resource_count_text">${machine.price.gold}</p>
+                    <img class="resource_icon" src="images/gold-coin.png">
+                    
                     <p class="resource_count_text">${machine.price.wood}</p>
                     <img class="resource_icon" src="images/wood.png">
                 </div>
             </button>
         </figure>
         `        
+    })
+
+    listOfMachines.forEach(machine => {
+        document.getElementById(`buy-${machine.name}`).addEventListener("click", () => { buyMachine(machine) })
     })
 }
 

@@ -12,11 +12,14 @@ export const Data = {
     }
 } 
 
-export const generateResource = (resource, amount) => {
+const initializeResource = (resource) => {
     if(localStorage.getItem(resource) === null){
-        localStorage.setItem(resource, JSON.stringify(0));
-        console.log(`${resource} added to localStorage.`);
+        localStorage.setItem(resource, JSON.stringify(0))
     }
+}
+
+export const generateResource = (resource, amount) => {
+    
     
     const old_resourceCount = JSON.parse(localStorage.getItem(resource));
     const new_resourceCount = old_resourceCount + amount;
@@ -41,9 +44,12 @@ export const subtractResource = (resource, amount) => {
 }
 
 export const updateCountDisplay = (listOfHTMLElements) =>{
-    listOfHTMLElements[0].innerHTML = localStorage.getItem('wood');
-    listOfHTMLElements[1].innerHTML = localStorage.getItem('metal');
-    listOfHTMLElements[2].innerHTML = localStorage.getItem('gold');
+    ['wood', 'metal', 'gold'].forEach(resource => {
+        initializeResource(resource);
+    })
+        listOfHTMLElements[0].innerHTML = localStorage.getItem('wood');
+        listOfHTMLElements[1].innerHTML = localStorage.getItem('metal');
+        listOfHTMLElements[2].innerHTML = localStorage.getItem('gold');
 }
 
 export const Inventory = {
