@@ -11,28 +11,41 @@ const warriorsGrid = document.querySelector('.warriors_grid');
 const animalsGrid = document.querySelector('.animals_grid')
 const machinesGrid = document.querySelector('.machines_grid')
 
-
+const buyWarrior = warrior => {
+    const gold = JSON.parse(localStorage.getItem('gold'));
+    if(gold >= warrior.priceGold){
+        subtractResource('gold', warrior.priceGold)
+        Inventory.addToInventory(warrior);
+        updateCountDisplay(listOfResourceElements)
+    }
+}
 
 const displayWarriors = () => {
     const listOfWarriors = Warriors.fetchFromLocalStorage();
 
     warriorsGrid.innerHTML = "";
-
     listOfWarriors.forEach(warrior => {
         warriorsGrid.innerHTML += `
             <figure class="warrior_item">
                 <h2 class="warrior_name">${warrior.categoryName}</h2>  
-                <img class="warrior_image" src=${warrior.image} alt="image of warrior"> 
-                <button onclick="${}">
+                <img class="warrior_image" src="${warrior.image}" alt="image of warrior"> 
+                <button id="buy-${warrior.categoryName}">
                     <div class="icon_container">
                         <p class="resource_count_text">${warrior.priceGold}</p>
                         <img id="gold-coin_icon" class="resource_icon" src="images/gold-coin.png" alt="gold icon">
                     </div>
                 </button>
             </figure>
-        `
+        `;
     });
+
+    listOfWarriors.forEach(warrior => {
+        document.getElementById(`buy-${warrior.categoryName}`).addEventListener('click', () => buyWarrior(warrior));
+    });
+    
 }
+
+// #TODO Buy animal/machine/other function here
 
 const displayOther = () => {
     const listOfAnimals = Other.fetchAnimalsFromLocalStorage();
@@ -42,7 +55,7 @@ const displayOther = () => {
         <figure class="animal_item">
             <h2>${animal.name}</h2>
             <img class="animal_image" src=${animal.image} alt="image of animal">
-            <button>
+            <button id="buy-${animal.name}">
                 <div class="icon_container">
                     <p class="resource_count_text">${animal.priceGold}</p>
                     <img class="resource_icon" src="images/gold-coin.png">
@@ -50,6 +63,10 @@ const displayOther = () => {
             </button>
         </figure>
         ` 
+    })
+
+    listOfAnimals.forEach(animal => {
+        document.getElementById(`buy-${animal.name}`).addEventListener("click", () => {/*Create buyAnimal/BuyOthers function */})
     })
 
     const listOfMachines = Other.fetchMachinesFromLocalStorage();

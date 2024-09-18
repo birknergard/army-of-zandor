@@ -24,7 +24,7 @@ mines.addEventListener("click", () => {
     let randomNumber = Random.range(1, 4);
     console.log(randomNumber);
         if(randomNumber === 1) {
-            generateResource('gold', 25); 
+            generateResource('gold', 2000); 
             updateCountDisplay(listOfResourceElements);
         } else {
             generateResource('metal', 25);
