@@ -62,7 +62,7 @@ const buyMachine = machine => {
         wood: JSON.parse(localStorage.getItem('wood')) >= machine.price.wood,
 
         compareCostToResources: () => {
-            if( gold && metal && wood) {
+            if(resources.gold && resources.metal && resources.wood) {
                 return true; 
             } else {
                 console.log("Not enough resources for purchase.")
@@ -70,10 +70,11 @@ const buyMachine = machine => {
             }
         }
     }
+
     if(resources.compareCostToResources()){
         subtractResource('gold', machine.price.gold); 
         subtractResource('metal', machine.price.metal);
-        subtractResource('wood', machine,price.metal);
+        subtractResource('wood', machine.price.metal);
 
         Inventory.addToInventory(machine);
         updateCountDisplay(listOfResourceElements);
@@ -108,18 +109,24 @@ const displayOther = () => {
         <figure class="machine_item">
             <h2>${machine.name}</h2>
             <img class="machine_image" src=${machine.image} alt="image of machine">
-            <button>
+            <button id="buy-${machine.name}">
                 <div class="icon_container">
-                    <p class="resource_count_text">${machine.price.gold}</p>
-                    <img class="resource_icon" src="images/gold-coin.png">
                     <p class="resource_count_text">${machine.price.metal}</p>
                     <img class="resource_icon" src="images/metal.png">
+
+                    <p class="resource_count_text">${machine.price.gold}</p>
+                    <img class="resource_icon" src="images/gold-coin.png">
+                    
                     <p class="resource_count_text">${machine.price.wood}</p>
                     <img class="resource_icon" src="images/wood.png">
                 </div>
             </button>
         </figure>
         `        
+    })
+
+    listOfMachines.forEach(machine => {
+        document.getElementById(`buy-${machine.name}`).addEventListener("click", () => { buyMachine(machine) })
     })
 }
 
