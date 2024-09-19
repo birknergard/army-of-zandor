@@ -1,6 +1,6 @@
 import { Data } from '../utilities/data.js'
 const animals= [{
-        name: "War-elephant",
+        name: "Elephant",
         priceGold: 400,
         image: '../images/elephant.png'
     },

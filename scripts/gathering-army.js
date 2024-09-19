@@ -27,8 +27,8 @@ const displayWarriors = () => {
     listOfWarriors.forEach(warrior => {
         warriorsGrid.innerHTML += `
             <figure class="warrior_item shop-item">
-                <h2 class="warrior_name">${warrior.categoryName}</h2>  
                 <img class="warrior_image" src="${warrior.image}" alt="image of warrior"> 
+                <h2>${warrior.categoryName}</h2>
                 <button id="buy-${warrior.categoryName}">
                     <div class="icon_container">
                         <p class="resource_count_text">${warrior.priceGold}</p>
@@ -84,8 +84,8 @@ const displayOther = () => {
     listOfAnimals.forEach(animal => {
         animalsGrid.innerHTML += `
         <figure class="animal_item shop-item">
-            <h2>${animal.name}</h2>
             <img class="animal_image" src=${animal.image} alt="image of animal">
+            <h2>${animal.name}</h2>
             <button id="buy-${animal.name}">
                 <div class="icon_container">
                     <p class="resource_count_text">${animal.priceGold}</p>
@@ -105,18 +105,18 @@ const displayOther = () => {
     listOfMachines.forEach(machine => {
         machinesGrid.innerHTML += `
         <figure class="machine_item shop-item">
-            <h2>${machine.name}</h2>
             <img class="machine_image" src=${machine.image} alt="image of machine">
+            <h2>${machine.name}</h2>
             <button id="buy-${machine.name}">
                 <div class="icon_container">
-                    <p class="resource_count_text">${machine.price.metal}</p>
-                    <img class="resource_icon" src="images/metal.png">
+                    <p class="metal_text resource_count_text">${machine.price.metal}</p>
+                    <img class="metal_icon resource_icon" src="images/metal.png">
 
-                    <p class="resource_count_text">${machine.price.gold}</p>
-                    <img class="resource_icon" src="images/gold-coin.png">
+                    <p class="gold_text resource_count_text">${machine.price.gold}</p>
+                    <img class="gold_icon resource_icon" src="images/gold-coin.png">
                     
-                    <p class="resource_count_text">${machine.price.wood}</p>
-                    <img class="resource_icon" src="images/wood.png">
+                    <p class="wood_text resource_count_text">${machine.price.wood}</p>
+                    <img class="wood_icon resource_icon" src="images/wood.png">
                 </div>
             </button>
         </figure>
