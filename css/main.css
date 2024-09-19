@@ -6,7 +6,7 @@
 *{
     padding:0;
     margin:0;
-    font-family: fantasy;
+    font-family: monospace;
 }
 
 /* Variables */
@@ -125,22 +125,37 @@ body{
 
     .shop-item{
         background-color: white;
-            box-shadow: var(--shop-item-box-shadow);
+        box-shadow: var(--shop-item-box-shadow);
+        padding: 20px;
+    }
+    
+    button{
+        margin-top: 10px;
+
+        background-color: #f7f7f7;
+        color: goldenrod;
+        border-radius: 10px;
+        border: 1px ridge goldenrod;
+        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.186);
+        
+        .icon_container>.resource_icon{
+            padding: 0px;
+            padding-left: 5px;
+        }
     }
 
     .warriors_grid{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        grid-auto-flow: column;
         grid-gap: 20px;
         
-        width: 80%;
+        width: 50%;
         
         margin-bottom: 50px;
         margin-top: 10px;
 
         .warrior_item{
-            grid-column: auto / span 2;
+            grid-column: auto / span 4;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
