@@ -9,51 +9,85 @@ export const Data = {
         if(localStorage.getItem(category) !== null){
             return JSON.parse(localStorage.getItem(category));
         }
+    },
+
+    initializeResources: () => {
+        if(localStorage.getItem('resources') === null){
+            localStorage.setItem('resources', JSON.stringify({'gold': 0, 'metal': 0, 'wood': 0}));
+        }
+    },
+
+    loadResources: () => {
+        return JSON.parse(localStorage.getItem('resources'));    
+    },
+
+    generateGold: amount => {
+        let resourceList = Data.loadResources();
+        resourceList.gold += amount;
+        localStorage.setItem('resources', JSON.stringify(resourceList));
+    },
+    
+    generateMetal: amount => {
+        let resourceList = Data.loadResources();
+        resourceList.metal += amount;
+        localStorage.setItem('resources', JSON.stringify(resourceList));
+    },
+    
+    generateWood: amount => {
+        let resourceList = Data.loadResources();
+        resourceList.wood += amount;
+        localStorage.setItem('resources', JSON.stringify(resourceList));
+    },
+
+    subtractGold: amount => {
+        let resourceList = Data.loadResources();
+            
+        if(amount > resourceList.gold) { console.log("Too few resources to subtract.") 
+            return false; 
+        } else {
+            resourceList.gold -= amount;
+            localStorage.setItem('resources', JSON.stringify(resourceList));
+            return true;
+        }
+    },
+    
+    subtractMetal: amount => {
+        let resourceList = Data.loadResources();
+            
+        if(amount > resourceList.metal) { console.log("Too few resources to subtract.") 
+            return false; 
+        } else {
+            resourceList.metal -= amount;
+            localStorage.setItem('resources', JSON.stringify(resourceList));
+            return true;
+        }
+    },
+
+    subtractWood: amount => {
+        let resourceList = loadResources();
+            
+        if(amount > resourceList.wood) { console.log("Too few resources to subtract.") 
+            return false; 
+        } else {
+            resourceList.wood -= amount;
+            localStorage.setItem('resources', JSON.stringify(resourceList));
+            return true;
+        }
     }
+
 } 
 
-const initializeResource = (resource) => {
-    if(localStorage.getItem(resource) === null){
-        localStorage.setItem(resource, JSON.stringify(0))
-    }
-}
-
-export const generateResource = (resource, amount) => {
-    
-    
-    const old_resourceCount = JSON.parse(localStorage.getItem(resource));
-    const new_resourceCount = old_resourceCount + amount;
-
-    localStorage.setItem(resource, JSON.stringify(new_resourceCount));
-}
-
-export const subtractResource = (resource, amount) => {
-    if(localStorage.getItem(resource) === null) {
-        localStorage.setItem(resource, JSON.stringify(0));
-    }
-
-    const old_resourceCount = JSON.parse(localStorage.getItem(resource));
-    const new_resourceCount = old_resourceCount - amount;
-    
-    if(new_resourceCount < 0) { console.log("Too few resources to subtract.") 
-        return false; 
-    } else {
-        localStorage.setItem(resource, JSON.stringify(new_resourceCount));
-        return true;
-    }
-}
 
 export const updateCountDisplay = (listOfHTMLElements) =>{
-    ['wood', 'metal', 'gold'].forEach(resource => {
-        initializeResource(resource);
-    })
-        listOfHTMLElements[0].innerHTML = localStorage.getItem('wood');
-        listOfHTMLElements[1].innerHTML = localStorage.getItem('metal');
-        listOfHTMLElements[2].innerHTML = localStorage.getItem('gold');
+        Data.initializeResources();
+        const listOfResources = Data.loadResources(); 
+        listOfHTMLElements[0].innerHTML = listOfResources.wood; 
+        listOfHTMLElements[1].innerHTML = listOfResources.metal;
+        listOfHTMLElements[2].innerHTML = listOfResources.gold;
 }
 
 export const Inventory = {
-    addToInventory: (object) => {
+    addToInventory: object => {
         if(localStorage.getItem('inventory') === null) {
             localStorage.setItem('inventory', JSON.stringify([]))
         }

@@ -1,5 +1,5 @@
 import Random from './utilities/random.js';
-import { updateCountDisplay, generateResource } from './utilities/data.js';
+import { updateCountDisplay, Data} from './utilities/data.js';
 
 const woodCounter = document.querySelector('#wood_count');
 const metalCounter = document.querySelector('#metal_count');
@@ -15,19 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 woods.addEventListener("click", () => {
-    generateResource('wood', Random.range(20, 75));
+    Data.generateWood(Random.range(20, 75));
     updateCountDisplay(listOfResourceElements);
 
 })
 
 mines.addEventListener("click", () => {
     let randomNumber = Random.range(1, 4);
-    console.log(randomNumber);
         if(randomNumber === 1) {
-            generateResource('gold', 2000); 
+            Data.generateGold(2000); 
             updateCountDisplay(listOfResourceElements);
         } else {
-            generateResource('metal', 25);
+            Data.generateMetal(500);
             updateCountDisplay(listOfResourceElements);
         }
     }
