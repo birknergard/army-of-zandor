@@ -54,7 +54,7 @@
     }
 
 /* Resource display */
-.icons{
+.user_resources{
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -80,6 +80,7 @@
             }
         }
 }
+
 /* Styling for "getting-resources.html" */
 .resources_main{
     display: flex;
@@ -199,6 +200,33 @@
             .resource_count_text{
                 font-size: 20px;
             }
+    }
+}
+
+/* your_army.html  */
+.your-army{
+    display: flex;
+    flex-direction: column; 
+
+    .your-army_warriors{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        width: 100%;    
+
+        .warrior{
+            grid-column: auto / span 1;
+            height: 300px;
+        }
+    }
+    .your-army_other{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        width: 100%;
+
+        .other{
+            grid-column: auto / span 2;
+            height: 300px;
+        }
     }
 }
 

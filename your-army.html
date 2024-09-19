@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Army</title>
-    <script defer src="scripts/your-army.js"></script>
+    <script defer src="scripts/your-army.js" type="module"></script>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -16,6 +16,42 @@
             <a class="nav-bar_button" href="your-army.html">Din arme</a>
         </nav>
     </header>
+
+    <section class="user_resources">
+        <div class="icon_container">
+                <img class="resource_icon" src="images/metal.png" alt="metal icon">
+                <p id="metal_count" class="resource_count_text">0</p>   
+            </div>
+
+            <div class="icon_container">
+                <img id="gold-coin_icon" class="resource_icon" src="images/gold-coin.png" alt="gold icon">
+                <p id="gold-coin_count" class="resource_count_text">0</p>
+            </div>
+
+            <div class="icon_container">
+                <img class="resource_icon" src="images/wood.png" alt="wood icon">
+                <p id="wood_count" class="resource_count_text">0</p>
+            </div>
+
+    </section>
+
+    <main class="your-army">
+        <h1 class="your-army_title">Your Army</h1>
+        
+        <section>
+            <h2 class="your-army_sub-header">Warriors</h2>
+            <div id="warrior-inventory" class="your-army_warriors">
+            <!-- Users warriors are printed here -->
+            </div>
+        </section>
+
+        <section>
+            <h2 class="your-army_sub-header">Other</h2>
+            <div id="other-inventory" class="your-army_other">
+                <!-- Users machines and animals are printed here -->
+            </div>
+        </section>       
+    </main>
 
 
 </body>
