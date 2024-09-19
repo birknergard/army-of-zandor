@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Army</title>
-    <script defer src="scripts/your-army.js"></script>
+    <script defer src="scripts/your-army.js" type="module"></script>
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
@@ -35,18 +35,25 @@
 
     </section>
 
-    <main class="your_army">
+    <main class="your-army">
 
-        <h1 class="your_army_title">Your Army</h1>
-
-        <section class="your_army_warriors">
+        <h1 class="your-army_title">Your Army</h1>
+        
+        <section>
             <h2 class="your-army_sub-header">Warriors</h2>
+            <article class="your-army_warriors">
+                <!-- Testobject-->
+                <img class="warrior" src="images/warrior-1.jpg" alt="">
+            </article>
         </section>
 
         <section>
             <h2 class="your-army_sub-header">Other</h2>
-        </section>
-
+            <article class="your-army_other">
+                <!-- Testobject-->
+                <img class="other" src="images/elephant.png" alt="">
+            </article>
+        </section>       
     </main>
 
 
