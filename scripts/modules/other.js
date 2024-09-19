@@ -34,7 +34,6 @@ const machines = [{
 const joinedList = [animals, machines];
 
 const Other = {
-    
     uploadToLocalStorage: () => {
         Data.uploadToLocalStorage(joinedList, 'other');
     },

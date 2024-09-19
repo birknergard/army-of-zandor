@@ -45,6 +45,7 @@ export const Data = {
         if(amount > resourceList.gold) { console.log("Too few resources to subtract.") 
             return false; 
         } else {
+            console.log("subtracting gold...")
             resourceList.gold -= amount;
             localStorage.setItem('resources', JSON.stringify(resourceList));
             return true;
@@ -57,6 +58,7 @@ export const Data = {
         if(amount > resourceList.metal) { console.log("Too few resources to subtract.") 
             return false; 
         } else {
+            console.log("subtracting metal...")
             resourceList.metal -= amount;
             localStorage.setItem('resources', JSON.stringify(resourceList));
             return true;
@@ -64,17 +66,15 @@ export const Data = {
     },
 
     subtractWood: amount => {
-        let resourceList = loadResources();
-            
-        if(amount > resourceList.wood) { console.log("Too few resources to subtract.") 
-            return false; 
+        let resourceList = Data.loadResources();
+        if(amount > resourceList.wood) {
+            console.log("Too few resources to subtract.") 
         } else {
+            console.log("subtracting wood...")
             resourceList.wood -= amount;
             localStorage.setItem('resources', JSON.stringify(resourceList));
-            return true;
         }
     }
-
 } 
 
 
@@ -85,6 +85,7 @@ export const updateCountDisplay = (listOfHTMLElements) =>{
         listOfHTMLElements[1].innerHTML = listOfResources.metal;
         listOfHTMLElements[2].innerHTML = listOfResources.gold;
 }
+
 
 export const Inventory = {
     addToInventory: object => {
