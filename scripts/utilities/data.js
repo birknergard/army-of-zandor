@@ -59,11 +59,25 @@ export const Inventory = {
         }
         const inventory = JSON.parse(localStorage.getItem('inventory'));
         inventory.push(object);
-        localStorage.setItem('inventory', JSON.stringify(inventory)) 
+        localStorage.setItem('inventory', JSON.stringify(inventory)); 
     },
 
+    fetchInventory : () => {
+        if(localStorage.getItem('inventory') !== null) {
+            return JSON.parse(localStorage.getItem('inventory'));
+        }
+    },
+
+    // TODO: Create filter for inventory
     fetchWarriorList: () => {
-        
-        return [];
+        const unfilteredInventory = Inventory.fetchInventory();  
+        const yourWarriors = unfilteredInventory.filter(item => item.image.includes("./images/warrior-"));
+        return yourWarriors;
+    },
+
+    fetchListofOther: () => {
+        const unfilteredInventory = Inventory.fetchInventory();
+        const listOfOthers = unfilteredInventory.filter(item => !item.image.includes("./images/warrior-"));
+        return listOfOthers;
     }
 }
