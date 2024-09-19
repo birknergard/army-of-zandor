@@ -11,6 +11,8 @@
 
 /* Variables */
 :root{
+    --top-margin: 100px;
+
     --header-color : #292929;
     --header-horizontal-padding: 40px;    
     --header-vertical-padding: 10px;
@@ -74,11 +76,12 @@ body{
             flex-direction: row;
             justify-content: center;
             align-items: center;
-            padding: 10px;
+            padding: 0px;
 
             .resource_icon{
                 width: 25px;
-                padding: 10px;
+                padding-right: 10px;
+                padding-left: 10px;
             }
 
             .resource_count_text{
@@ -86,19 +89,19 @@ body{
             }
         }
 }
+.description{
+        text-align: center;
+        margin-bottom: 25px;
+}
 
 /* Styling for "getting-resources.html" */
 .resources_main{
-    margin-top: 100px;
+    margin-top: var(--top-margin);
 
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: space-between;
-    padding: 50px;
-    .description{
-        text-align: center;
-    }
 
     .places{
         margin-top: 10px;
@@ -126,12 +129,16 @@ body{
 
 /* Shop */
 .shop{
-    margin-top: 150px;
+    margin-top: var(--top-margin);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    .shop-titles{
+        font-size: 25px;
+    }
 
     .shop-item{
         background-color: white;
@@ -279,15 +286,26 @@ body{
 .your-army{
     display: flex;
     flex-direction: column; 
+    justify-content: center;
+    align-items: center;
 
     .your-army_warriors{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        width: 100%;    
+        grid-gap: 20px;
+        width: 50%;    
 
         .warrior{
+            background-color: white;
             grid-column: auto / span 1;
-            height: 300px;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+
+            .warrior_image{
+                width: 100px;
+            }
         }
     }
     .your-army_other{
@@ -302,24 +320,36 @@ body{
     }
 }
 
-@media screen and (max-width: 900px){
+@media screen and (min-width: 1200px){
     .resources_main{
-        .places{
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-            .resource_image{
-                width: 80%;
-            }
 
-        }
     }
     .shop{
-        .warriors_grid{
-            margin: 20px;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-        }
+
+    }
+    .your-army{
+    
+    }
+}
+@media screen and (min-width: 768px){
+    .resources_main{
+
+    }
+    .shop{
+
+    }
+    .your-army{
+
+    }
+}
+@media screen and (max-width: 600px){
+    .resources_main{
+
+    }
+    .shop{
+
+    }
+    .your-army{
+
     }
 }

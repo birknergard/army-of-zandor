@@ -4,21 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Army</title>
-    <script defer src="scripts/your-army.js" type="module"></script>
     <link rel="stylesheet" href="css/main.css">
+    <script defer src="scripts/your-army.js" type="module"></script>
 </head>
 <body>
     <header class="header">
         <h1 class="title">ArmiesOfZondor</h1>
-        <nav class="nav-bar">
-            <a class="nav-bar_button" href="gathering-army.html">Kjøp</a>
-            <a class="nav-bar_button" href="getting-resources.html">Ressurser</a>
-            <a class="nav-bar_button" href="your-army.html">Din arme</a>
-        </nav>
-    </header>
-
-    <section class="user_resources">
-        <div class="icon_container">
+        <aside class="user_resources">
+            <div class="icon_container">
                 <img class="resource_icon" src="images/metal.png" alt="metal icon">
                 <p id="metal_count" class="resource_count_text">0</p>   
             </div>
@@ -32,8 +25,15 @@
                 <img class="resource_icon" src="images/wood.png" alt="wood icon">
                 <p id="wood_count" class="resource_count_text">0</p>
             </div>
+        </aside>
+        <nav class="nav-bar">
+            <a class="nav-bar_button" href="gathering-army.html">Kjøp</a>
+            <a class="nav-bar_button" href="getting-resources.html">Ressurser</a>
+            <a class="nav-bar_button" href="your-army.html">Din arme</a>
+        </nav>
+    </header>
 
-    </section>
+
 
     <main class="your-army">
         <h1 class="your-army_title">Your Army</h1>
