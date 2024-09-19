@@ -54,7 +54,7 @@
     }
 
 /* Resource display */
-.icons{
+.user_resources{
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
