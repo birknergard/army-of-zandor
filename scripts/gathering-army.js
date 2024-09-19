@@ -26,7 +26,7 @@ const displayWarriors = () => {
     warriorsGrid.innerHTML = "";
     listOfWarriors.forEach(warrior => {
         warriorsGrid.innerHTML += `
-            <figure class="warrior_item">
+            <figure class="warrior_item shop-item">
                 <h2 class="warrior_name">${warrior.categoryName}</h2>  
                 <img class="warrior_image" src="${warrior.image}" alt="image of warrior"> 
                 <button id="buy-${warrior.categoryName}">
@@ -85,7 +85,7 @@ const displayOther = () => {
     animalsGrid.innerHTML += ""; 
     listOfAnimals.forEach(animal => {
         animalsGrid.innerHTML += `
-        <figure class="animal_item">
+        <figure class="animal_item shop-item">
             <h2>${animal.name}</h2>
             <img class="animal_image" src=${animal.image} alt="image of animal">
             <button id="buy-${animal.name}">
@@ -106,7 +106,7 @@ const displayOther = () => {
     machinesGrid.innerHTML += "";
     listOfMachines.forEach(machine => {
         machinesGrid.innerHTML += `
-        <figure class="machine_item">
+        <figure class="machine_item shop-item">
             <h2>${machine.name}</h2>
             <img class="machine_image" src=${machine.image} alt="image of machine">
             <button id="buy-${machine.name}">
