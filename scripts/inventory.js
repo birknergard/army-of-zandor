@@ -29,7 +29,7 @@ const displayYourAnimals_Machines = () => {
 
     listOfOthers.forEach(other => {
         othersGrid.innerHTML +=
-        `<img class="other" src=${other.image} alt="image of other">`
+        `<div class="other"><img class="other_image" src=${other.image} alt="image of other"></div>`
     })
 }
 

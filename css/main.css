@@ -289,11 +289,14 @@ body{
     justify-content: center;
     align-items: center;
 
+    margin-top: var(--top-margin);
+    
     .inventory_warriors{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-gap: 20px;
-        width: 50%;    
+
+        width: 90%;
 
         .warrior{
             background-color: white;
@@ -308,14 +311,25 @@ body{
             }
         }
     }
-    .inventory_other{
+    .inventory_others{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        width: 100%;
+        grid-gap: 20px;
+        width: 90%;
 
         .other{
             grid-column: auto / span 2;
-            height: 300px;
+            background-color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+
+            padding: 20px;
+
+            .other_image{
+                width: 200px;
+            }
         }
     }
 }
