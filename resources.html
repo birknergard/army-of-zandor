@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Army</title>
+    <title>Get Resources</title>
     <link rel="stylesheet" href="css/main.css">
-    <script defer src="scripts/your-army.js" type="module"></script>
+    <script defer src="scripts/getting-resources.js" type="module"></script>
 </head>
 <body>
     <header class="header">
@@ -27,32 +27,18 @@
             </div>
         </aside>
         <nav class="nav-bar">
-            <a class="nav-bar_button" href="gathering-army.html">Kjøp</a>
-            <a class="nav-bar_button" href="getting-resources.html">Ressurser</a>
-            <a class="nav-bar_button" href="your-army.html">Din arme</a>
+            <a class="nav-bar_button nav_inventory" href="inventory.html">kjøp</a>
+            <a class="nav-bar_button nav_resources" href="resources.html">Ressurser</a>
+            <a class="nav-bar_button nav_inventory" href="inventory.html">Din arme</a>
         </nav>
     </header>
 
-
-
-    <main class="your-army">
-        <h1 class="your-army_title">Your Army</h1>
-        
-        <section>
-            <h2 class="your-army_sub-header">Warriors</h2>
-            <div id="warrior-inventory" class="your-army_warriors">
-            <!-- Users warriors are printed here -->
-            </div>
+    <main class="resources">
+        <h1 class="description">Click the two images to gather resources!</h1>
+        <section class="places">
+            <img id="mines-image" class="resource_image mines" src="images/mines-of-thiartha.jpg">
+            <img id="woods-image" class="resource_image woods" src="images/woods-of-ghalduz.png">
         </section>
-
-        <section>
-            <h2 class="your-army_sub-header">Other</h2>
-            <div id="other-inventory" class="your-army_other">
-                <!-- Users machines and animals are printed here -->
-            </div>
-        </section>       
     </main>
-
-
 </body>
 </html>

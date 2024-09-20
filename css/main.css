@@ -95,7 +95,7 @@ body{
 }
 
 /* Styling for "getting-resources.html" */
-.resources_main{
+.resources{
     margin-top: var(--top-margin);
 
     display: flex;
@@ -283,13 +283,13 @@ body{
 }
 
 /* your_army.html  */
-.your-army{
+.inventory{
     display: flex;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
 
-    .your-army_warriors{
+    .inventory_warriors{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-gap: 20px;
@@ -308,7 +308,7 @@ body{
             }
         }
     }
-    .your-army_other{
+    .inventory_other{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         width: 100%;
@@ -320,17 +320,6 @@ body{
     }
 }
 
-@media screen and (min-width: 1200px){
-    .resources_main{
-
-    }
-    .shop{
-
-    }
-    .your-army{
-    
-    }
-}
 @media screen and (min-width: 768px){
     .resources_main{
 
