@@ -71,6 +71,15 @@ body{
             .resource_count_text{
                 font-size: 20px;
             }
+            .wood_text{
+                    color: #ac7b33;
+            }
+            .metal_text{
+                    color:grey;
+            }
+            .gold_text{
+                    color: rgb(240, 182, 36);
+            }
         }
     }    
     
@@ -129,140 +138,140 @@ body{
 /* Shop */
 .shop{
     margin-top: var(--top-margin);
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
-    .shop-titles{
-        font-size: 25px;
-    }
-
-    .shop-item{
-        background-color: white;
-        box-shadow: var(--shop-item-box-shadow);
-        padding: 20px;
-    }
-    
-    button{
-        margin-top: 10px;
-
-        padding-left: 30px;
-        padding-right: 30px;
-
-        background-color: #f7f7f7;
-        color: goldenrod;
-        border-radius: 10px;
-        border: 1px ridge goldenrod;
-        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.186);
-        
-        .icon_container>.resource_icon{
-            padding: 0px;
-            padding-left: 5px;
-        }
-    }
-
-    .warriors_grid{
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-gap: 20px;
-        
-        width: var(--shop-grid-width);
-        
-        margin-bottom: 50px;
-        margin-top: 10px;
-
-        .warrior_item{
-            grid-column: auto / span 3;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-
-            border-radius: 10px;
-
-            .warrior_image{
-                height: 300px;
-            }
-
-        }
-    }
-
-    .animals_grid{
-        display:grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-auto-flow: row;
-        grid-gap: 20px;
-
+    .shop_section{
         width: var(--shop-grid-width);
 
-        margin-bottom: 50px;
-        margin-top: 10px;
-
-
-        .animal_item{
-            grid-column: auto / span 4;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-
-            border-radius: 10px;
-
-            .animal_image{
-                margin-bottom: 10px;
-                margin-top: 10px;
-
-                height: 300px;
-            }
-        }
-    }
-    
-    .machines_grid{
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-gap: 20px;
-
-        width: var(--shop-grid-width);
-        height: fit-content;
-
-        margin-top: 10px;
-        margin-bottom: 30px;
-
-        .machine_item{
-            grid-column: auto / span 4;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-
-            border-radius: 10px;
-
-            .machine_image{
-                height: 300px;
-                margin-bottom: 10px;
-            }
-            .wood_text{
-                color: #462b02;
-            }
-            .metal_text{
-                color:grey;
-            }
-            .gold_text{
-                color: rgb(240, 182, 36);
-            }
-
-            .metal_icon{
-                margin-right: 15px;
-            }
-            .gold_icon{
-                margin-right: 15px;
-            }
-
+        .shop-titles{
+            font-size: 25px;
+            align-self: flex-start;
 
         }
+
+        .shop-item{
+            background-color: white;
+            box-shadow: var(--shop-item-box-shadow);
+            padding: 20px;
+        }
+
+        button{
+            margin-top: 10px;
+
+            padding-left: 30px;
+            padding-right: 30px;
+
+            background-color: #f7f7f7;
+            color: goldenrod;
+            border-radius: 10px;
+            border: 1px ridge goldenrod;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.186);
+
+            .icon_container>.resource_icon{
+                padding: 0px;
+                padding-left: 5px;
+            }
+        }
+
+        .warriors_grid{
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-gap: 20px;
+
+
+            margin-bottom: 50px;
+            margin-top: 10px;
+
+            .warrior_item{
+                grid-column: auto / span 3;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+
+                border-radius: 10px;
+
+                .warrior_image{
+                    width: 200px;
+                }
+
+            }
+        }
+
+        .animals_grid{
+            display:grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-flow: row;
+            grid-gap: 20px;
+
+            margin-bottom: 50px;
+            margin-top: 10px;
+
+            .animal_item{
+                grid-column: auto / span 4;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: center;
+
+                border-radius: 10px;
+
+                .animal_image{
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+
+                    width: 300px;
+                    padding: 10px;
+                }
+            }
+        }
+
+        .machines_grid{
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-gap: 20px;
+
+            height: fit-content;
+
+            margin-top: 10px;
+            margin-bottom: 30px;
+
+            .machine_item{
+                grid-column: auto / span 4;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: center;
+
+                border-radius: 10px;
+
+                .machine_image{
+                    width: 300px;
+                    margin-bottom: 10px;
+                }
+                .wood_text{
+                    color: #ac7b33;
+                }
+                .metal_text{
+                    color:grey;
+                }
+                .gold_text{
+                    color: rgb(240, 182, 36);
+                }
+
+                .metal_icon{
+                    margin-right: 15px;
+                }
+                .gold_icon{
+                    margin-right: 15px;
+                }
+
+
+            }
     }
 
     .icon_container{
@@ -281,6 +290,8 @@ body{
                 font-size: 20px;
             }
     }
+    }
+
 }
 
 /* your_army.html  */
@@ -367,6 +378,25 @@ body{
             }
         }
     }
+    .shop{
+        .shop_section{
+            .warriors_grid{
+                .warrior_item{
+                    grid-column: auto / span 4;
+                }
+            }
+            .animals_grid{
+                .animal_item{
+                    grid-column: auto / span 6;
+                }
+            }
+            .machines_grid{
+                .machine_item{
+                    grid-column: auto / span 6;
+                }
+            }
+        } 
+    }
 }
 
 @media screen and (max-width: 850px){
@@ -389,12 +419,33 @@ body{
         }
     }
 
-    .resources_main{
-
+    .resources{
+        .places{
+            flex-direction: column;
+            .resource_image{
+                width: 90%;
+            }
+        }
     }
     
     .shop{
-
+        .shop_section{
+            .warriors_grid{
+                .warrior_item{
+                    grid-column: auto / span 6;
+                }
+            }
+            .animals_grid{
+                .animal_item{
+                    grid-column: auto / span 12;
+                }
+            }
+            .machines_grid{
+                .machine_item{
+                    grid-column: auto / span 12;
+                }
+            }
+        } 
     }
 
     .inventory{
@@ -414,7 +465,7 @@ body{
         }
     }
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 640px){
     .header{
         padding: 15px;
         flex-direction: column-reverse;
@@ -429,6 +480,19 @@ body{
 
     .shop{
 
+        .description{
+            margin-top: 25px;
+        }
+
+        .shop_section{
+            .warriors_grid{
+                .warrior_item{
+                    .warrior_image{
+                        width: 150px;
+                    }
+                }
+            }
+        }
     }
 
     .inventory{
