@@ -19,7 +19,7 @@
 
 
     /* For shop */
-    --shop-grid-width : 60%;
+    --shop-grid-width : 90%;
     --shop-item-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.163);
 }
 
@@ -29,66 +29,65 @@ body{
 
 /* Styling for Navigation-bar / Header */
 .header{
-        position: fixed;
-        top: 0;
-        width: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: var(--header-side-padding);
+    padding-right: var(--header-side-padding);
+    padding-top: var(--header-vertical-padding);
+    padding-bottom: var(--header-vertical-padding);
+    background-color: var(--header-color);
 
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-
-        padding-left: var(--header-side-padding);
-        padding-right: var(--header-side-padding);
-        padding-top: var(--header-vertical-padding);
-        padding-bottom: var(--header-vertical-padding);
-
-        background-color: var(--header-color);
-
-        .title{
-            margin-left: 20px;
-            color: white;
-        }
-
-        .nav-bar{
-           margin-right: 20px;
-           
-           .nav-bar_button{
-            color: white;
-            font-size: 16px;
-            padding-left: var(--header-vertical-padding);
-            padding-right: var(--header-vertical-padding);
-            text-decoration: none;
-           }
-        }
-    }
-
-/* Resource display */
-.user_resources{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
+    .title{
+        margin-left: 20px;
         color: white;
-        
+    }
+    
+    /* Resource display */
+    .user_resources{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    
         .icon_container{
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
             padding: 0px;
-
+        
             .resource_icon{
                 width: 25px;
                 padding-right: 10px;
                 padding-left: 10px;
             }
-
+        
             .resource_count_text{
                 font-size: 20px;
             }
         }
+    }    
+    
+    .nav-bar{
+        margin-right: 20px;
+           
+        .nav-bar_button{
+        color: white;
+        font-size: 16px;
+        padding-left: var(--header-vertical-padding);
+        padding-right: var(--header-vertical-padding);
+        text-decoration: none;
+        }
+    }
 }
+
+
 .description{
         text-align: center;
         margin-bottom: 25px;
@@ -147,8 +146,10 @@ body{
     }
     
     button{
-        width: 60%;
         margin-top: 10px;
+
+        padding-left: 30px;
+        padding-right: 30px;
 
         background-color: #f7f7f7;
         color: goldenrod;
@@ -173,7 +174,7 @@ body{
         margin-top: 10px;
 
         .warrior_item{
-            grid-column: auto / span 4;
+            grid-column: auto / span 3;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -182,7 +183,7 @@ body{
             border-radius: 10px;
 
             .warrior_image{
-                height: 200px;
+                height: 300px;
             }
 
         }
@@ -201,7 +202,7 @@ body{
 
 
         .animal_item{
-            grid-column: auto / span 6;
+            grid-column: auto / span 4;
 
             display: flex;
             flex-direction: column;
@@ -214,7 +215,7 @@ body{
                 margin-bottom: 10px;
                 margin-top: 10px;
 
-                height: 200px;
+                height: 300px;
             }
         }
     }
@@ -231,7 +232,7 @@ body{
         margin-bottom: 30px;
 
         .machine_item{
-            grid-column: auto / span 6;
+            grid-column: auto / span 4;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -309,7 +310,7 @@ body{
         grid-template-columns: repeat(12, 1fr);
         grid-gap: 20px;
 
-        width: 90%;
+        width: 100%;
 
         .warrior{
             background-color: white;
@@ -323,7 +324,7 @@ body{
             align-items: flex-end;
 
             .warrior_image{
-                width: 100px;
+                width: 100%;
             }
         }
     }
@@ -331,10 +332,11 @@ body{
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-gap: 20px;
-        width: 90%;
+
+        width: 100%;
 
         .other{
-            grid-column: auto / span 2;
+            grid-column: auto / span 3;
             background-color: white;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.088);
 
@@ -346,7 +348,22 @@ body{
             border-radius: 10px;
 
             .other_image{
-                width: 200px;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1200px){
+    .inventory{
+        .inventory_warriors{
+            .warrior{
+                grid-column: auto / span 2;
+            }
+        }
+        .inventory_others{
+            .other{
+                grid-column: auto / span 4;
             }
         }
     }
@@ -354,7 +371,7 @@ body{
 
 @media screen and (max-width: 850px){
     .header{
-        padding: 30px;
+        padding: 20px;
         .title{
             display: none;        
         }
@@ -379,15 +396,25 @@ body{
     .shop{
 
     }
+
     .inventory{
         margin-left: 30px;
         margin-right: 30px;
 
+        .inventory_warriors{
+            .warrior{
+                grid-column: auto / span 3;
+            }
+        }
+
+        .inventory_others{
+            .other{
+                grid-column: auto / span 6;
+            }
+        }
     }
 }
 @media screen and (max-width: 600px){
-
-
     .header{
         padding: 15px;
         flex-direction: column-reverse;
@@ -395,19 +422,36 @@ body{
         align-items: center;
         height: 70px;
     }
+
     .resources_main{
 
     }
+
     .shop{
 
     }
+
     .inventory{
         .inventory_title{
             align-self: center;
+            font-size: 35px;
         }
-        margin-left: 5px;
-        margin-right: 5px;
-    
+        
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-top: 150px;
+
+        .inventory_warriors{
+            .warrior{
+                grid-column: auto / span 6;
+            }
+        }
+
+        .inventory_others{
+            .other{
+                grid-column: auto / span 12;
+            }
+        }
 
     }
 }
