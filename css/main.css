@@ -93,6 +93,9 @@ body{
         padding-right: var(--header-vertical-padding);
         text-decoration: none;
         }
+        .nav-bar_button:hover{
+            text-decoration:underline;
+        }
     }
 }
 
@@ -474,13 +477,25 @@ body{
         height: 70px;
     }
 
-    .resources_main{
+    .resources{
+       .description{
+            display: none;
+       } 
+       
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-top: 150px;
 
     }
 
     .shop{
 
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-top: 150px;
+
         .description{
+            display:none;
             margin-top: 25px;
         }
 
@@ -497,8 +512,7 @@ body{
 
     .inventory{
         .inventory_title{
-            align-self: center;
-            font-size: 35px;
+            display: none;
         }
         
         margin-left: 30px;
@@ -507,13 +521,13 @@ body{
 
         .inventory_warriors{
             .warrior{
-                grid-column: auto / span 6;
+                grid-column: auto / span 4;
             }
         }
 
         .inventory_others{
             .other{
-                grid-column: auto / span 12;
+                grid-column: auto / span 6;
             }
         }
 
