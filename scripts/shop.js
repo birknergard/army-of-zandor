@@ -7,9 +7,9 @@ const metalCounter = document.querySelector('#metal_count')
 const goldCounter = document.querySelector('#gold-coin_count')
 const listOfResourceElements = [woodCounter, metalCounter, goldCounter]
 
-const warriorsGrid = document.querySelector('.warriors_grid');
-const animalsGrid = document.querySelector('.animals_grid')
-const machinesGrid = document.querySelector('.machines_grid')
+const warriorsGrid = document.querySelector('.shop__grid--warriors');
+const animalsGrid = document.querySelector('.shop__grid--animals')
+const machinesGrid = document.querySelector('.shop__grid--machines')
 
 const buyWarrior = warrior => {
     const gold = Data.loadResources().gold;
@@ -106,9 +106,9 @@ const displayOther = () => {
         machinesGrid.innerHTML += `
         <figure class="shop__grid__item--machine shop__grid__item">
             <img class="shop__grid__item__image" src=${machine.image} alt="image of machine">
-            <h2>${machine.name}</h2>
+            <h2 class="shop__grid__item__title">${machine.name}</h2>
             <button class="item__button" id="buy-${machine.name}">
-                <div class="item__button_price">
+                <div class="item__button__price">
                     <p class="button__price__text button__price__text--metal">${machine.price.metal}</p>
                     <img class="button__price__icon button__price__icon--metal" src="images/metal.png">
 

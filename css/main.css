@@ -166,7 +166,7 @@ body{
             padding: 20px;
         }
 
-        button{
+        .item__button{
             margin-top: 10px;
 
             padding-left: 30px;
@@ -178,13 +178,41 @@ body{
             border: 1px ridge goldenrod;
             box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.186);
 
-            .icon_container>.resource_icon{
+            .item__button__price>.button__price__icon{
                 padding: 0px;
                 padding-left: 5px;
             }
         }
+        .item__button:hover{
+            background-color:white;
+            cursor: pointer;
+            border: 1px ridge wheat;
+        }
+        .item__button:active{
+            background-color: wheat;
+        }
 
-        .warriors_grid{
+        .item__button__price{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+
+            .button__price__icon{
+                width: 30px;
+                padding: 10px;
+            }
+            .button__price__text{
+                font-size: 20px;
+            }
+        }
+
+        .shop__grid{
+           /* Move repeated grid code here */ 
+        }
+
+        .shop__grid--warriors{
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             grid-gap: 20px;
@@ -193,7 +221,7 @@ body{
             margin-bottom: 50px;
             margin-top: 10px;
 
-            .warrior_item{
+            .shop__grid__item--warrior{
                 grid-column: auto / span 3;
                 display: flex;
                 flex-direction: column;
@@ -202,14 +230,14 @@ body{
 
                 border-radius: 10px;
 
-                .warrior_image{
+                .shop__grid__item__image--warrior{
                     width: 200px;
                 }
 
             }
         }
 
-        .animals_grid{
+        .shop__grid--animals{
             display:grid;
             grid-template-columns: repeat(12, 1fr);
             grid-auto-flow: row;
@@ -218,7 +246,7 @@ body{
             margin-bottom: 50px;
             margin-top: 10px;
 
-            .animal_item{
+            .shop__grid__item--animal{
                 grid-column: auto / span 4;
 
                 display: flex;
@@ -228,7 +256,7 @@ body{
 
                 border-radius: 10px;
 
-                .animal_image{
+                .shop__grid__item__image{
                     margin-bottom: 10px;
                     margin-top: 10px;
 
@@ -238,7 +266,7 @@ body{
             }
         }
 
-        .machines_grid{
+        .shop__grid--machines{
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             grid-gap: 20px;
@@ -248,7 +276,7 @@ body{
             margin-top: 10px;
             margin-bottom: 30px;
 
-            .machine_item{
+            .shop__grid__item--machine{
                 grid-column: auto / span 4;
                 display: flex;
                 flex-direction: column;
@@ -257,47 +285,31 @@ body{
 
                 border-radius: 10px;
 
-                .machine_image{
+                .shop__grid__item__image{
                     width: 300px;
                     margin-bottom: 10px;
                 }
-                .wood_text{
+                
+                .button__price__text--wood{
                     color: #ac7b33;
                 }
-                .metal_text{
+                .button__price__text--metal{
                     color:grey;
                 }
-                .gold_text{
+                .button__price__text--gold{
                     color: rgb(240, 182, 36);
                 }
 
-                .metal_icon{
+                .button__price__icon--metal{
                     margin-right: 15px;
                 }
-                .gold_icon{
+                .button__price__icon--gold{
                     margin-right: 15px;
                 }
-
-
             }
     }
 
-    .icon_container{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-
-            .resource_icon{
-                width: 30px;
-                padding: 10px;
-            }
-
-            .resource_count_text{
-                font-size: 20px;
-            }
-    }
+        
     }
 
 }
