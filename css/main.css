@@ -42,65 +42,70 @@ body{
     padding-bottom: var(--header-vertical-padding);
     background-color: var(--header-color);
 
-    .title{
+    .header__title{
         margin-left: 20px;
         color: white;
     }
     
     /* Resource display */
-    .user_resources{
+    .header__resources{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
     color: white;
     
-        .icon_container{
+        .header__resource{
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
             padding: 0px;
         
-            .resource_icon{
+            .header__resource__icon{
                 width: 25px;
                 padding-right: 10px;
                 padding-left: 10px;
             }
         
-            .resource_count_text{
+            .header__resource__text{
                 font-size: 20px;
             }
-            .wood_text{
+            .header__resource__text--wood{
                     color: #ac7b33;
             }
-            .metal_text{
+            .header__resource__text--metal{
                     color:grey;
             }
-            .gold_text{
+            .header__resource__text--gold{
                     color: rgb(240, 182, 36);
             }
         }
     }    
     
-    .nav-bar{
+    .header__nav-bar{
         margin-right: 20px;
            
-        .nav-bar_button{
-        color: white;
-        font-size: 16px;
-        padding-left: var(--header-vertical-padding);
-        padding-right: var(--header-vertical-padding);
-        text-decoration: none;
+        .header__nav-bar__button{
+            color: white;
+            font-size: 16px;
+            padding-left: var(--header-vertical-padding);
+            padding-right: var(--header-vertical-padding);
+            text-decoration: none;
         }
-        .nav-bar_button:hover{
+
+        .header__nav-bar__button:hover{
             text-decoration:underline;
+        }
+
+        .header__nav-bar__button--active{
+            text-decoration: underline;
         }
     }
 }
 
 
-.description{
+.shop__description, .resources__description, .inventory__description{
         text-align: center;
         margin-bottom: 25px;
 }
@@ -114,26 +119,26 @@ body{
     align-content: center;
     justify-content: space-between;
 
-    .places{
+    .resources__places{
         margin-top: 10px;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
 
-        .resource_image{
+        .resources__places__image{
             width: 50%;
             border-radius: 100px;
             margin: 20px;
             box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
         }
-        .mines:hover{
+
+        .resources__places__image--mines:hover{
             cursor: url(../images/pickaxe-cursor.png), auto;
         }
-        .woods:hover{
+        .resources__places__image--woods:hover{
             cursor: url(../images/axe-cursor.png), auto;
         }
-        
     }
 }
 
