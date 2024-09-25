@@ -139,7 +139,6 @@ body{
         .resources__places__image--woods:hover{
             cursor: url(../images/axe-cursor.png), auto;
         }
-        
     }
 }
 
@@ -152,16 +151,16 @@ body{
     justify-content: center;
     align-items: center;
     
-    .shop_section{
+    .shop__section{
         width: var(--shop-grid-width);
 
-        .shop-titles{
+        .shop__section__titles{
             font-size: 25px;
             align-self: flex-start;
 
         }
 
-        .shop-item{
+        .shop__grid__item{
             background-color: white;
             box-shadow: var(--shop-item-box-shadow);
             padding: 20px;
