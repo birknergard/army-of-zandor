@@ -9,44 +9,44 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="title">ArmiesOfZondor</h1>
-        <aside class="user_resources">
-            <div class="icon_container">
-                <img class="resource_icon" src="images/metal.png" alt="metal icon">
-                <p id="metal_count" class="resource_count_text metal_text">0</p>   
+        <h1 class="header__title">ArmiesOfZondor</h1>
+        <aside class="header__resources">
+            <div class="header__resource">
+                <img class="header__resource__icon" src="images/metal.png" alt="metal icon">
+                <p class="header__resource__text header__resource__text--metal" id="metal_count">0</p>   
             </div>
 
-            <div class="icon_container">
-                <img id="gold-coin_icon" class="resource_icon" src="images/gold-coin.png" alt="gold icon">
-                <p id="gold-coin_count" class="resource_count_text gold_text">0</p>
+            <div class="header__resource">
+                <img class="header__resource__icon" src="images/gold-coin.png" alt="gold icon">
+                <p class="header__resource__text header__resource__text--gold" id="gold-coin_count">0</p>   
             </div>
 
-            <div class="icon_container">
-                <img class="resource_icon" src="images/wood.png" alt="wood icon">
-                <p id="wood_count" class="resource_count_text wood_text">0</p>
+            <div class="header__resource">
+                <img class="header__resource__icon" src="images/wood.png" alt="wood icon">
+                <p class="header__resource__text header__resource__text--wood" id="wood_count">0</p>
             </div>
         </aside>
-        <nav class="nav-bar">
-            <a class="nav-bar_button nav_inventory" href="shop.html">Shop</a>
-            <a class="nav-bar_button nav_resources" href="resources.html">Resources</a>
-            <a class="nav-bar_button nav_inventory" href="inventory.html">Inventory</a>
+        <nav class="header__nav-bar">
+            <a class="header__nav-bar__button header__nav-bar__button--shop" href="shop.html">Shop</a>
+            <a class="header__nav-bar__button header__nav-bar__button--resources" href="resources.html">Resources</a>
+            <a class="header__nav-bar__button header__nav-bar__button--inventory header__nav-bar__button--active" href="inventory.html">Inventory</a>
         </nav>
     </header>
 
     <main class="inventory">
-        <h1 class="inventory_title">Your Army</h1>
-        <section>
-            <h2 class="inventory_sub-header">Warriors</h2>
-            <div id="warrior-inventory" class="inventory_warriors">
+        <h1 class="inventory__description">Your Army</h1>
+        <section class="inventory__section">
+            <h2 class="inventory__sub-header">Warriors</h2>
+            <div class="inventory__grid inventory__grid--warriors" id="warrior-inventory">
                 <p>You have no warriors.</p>
 
             <!-- Users warriors are printed here -->
             </div>
         </section>
 
-        <section>
-            <h2 class="inventory_sub-header">Other</h2>
-            <div id="other-inventory" class="inventory_others">
+        <section class="inventory__section">
+            <h2 class="inventory__sub-header">Other</h2>
+            <div class="inventory__grid inventory__grid--others" id="other-inventory">
                 <p>You have no animals nor machines.</p>
                 <!-- Users machines and animals are printed here -->
             </div>

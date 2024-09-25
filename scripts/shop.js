@@ -7,9 +7,9 @@ const metalCounter = document.querySelector('#metal_count')
 const goldCounter = document.querySelector('#gold-coin_count')
 const listOfResourceElements = [woodCounter, metalCounter, goldCounter]
 
-const warriorsGrid = document.querySelector('.warriors_grid');
-const animalsGrid = document.querySelector('.animals_grid')
-const machinesGrid = document.querySelector('.machines_grid')
+const warriorsGrid = document.querySelector('.shop__grid--warriors');
+const animalsGrid = document.querySelector('.shop__grid--animals')
+const machinesGrid = document.querySelector('.shop__grid--machines')
 
 const buyWarrior = warrior => {
     const gold = Data.loadResources().gold;
@@ -26,13 +26,13 @@ const displayWarriors = () => {
     warriorsGrid.innerHTML = "";
     listOfWarriors.forEach(warrior => {
         warriorsGrid.innerHTML += `
-            <figure class="warrior_item shop-item">
-                <img class="warrior_image" src="${warrior.image}" alt="image of warrior"> 
-                <h2>${warrior.categoryName}</h2>
-                <button id="buy-${warrior.categoryName}">
-                    <div class="icon_container">
-                        <p class="resource_count_text">${warrior.priceGold}</p>
-                        <img id="gold-coin_icon" class="resource_icon" src="images/gold-coin.png" alt="gold icon">
+            <figure class="shop__grid__item--warrior shop__grid__item">
+                <img class="shop__grid__item__image--warrior" src="${warrior.image}" alt="image of warrior"> 
+                <h2 class="shop__grid__item__title">${warrior.categoryName}</h2>
+                <button class="item__button" id="buy-${warrior.categoryName}">
+                    <div class="item__button__price">
+                        <p class="button__price__text">${warrior.priceGold}</p>
+                        <img class="button__price__icon" id="gold-coin_icon" src="images/gold-coin.png" alt="gold icon">
                     </div>
                 </button>
             </figure>
@@ -83,13 +83,13 @@ const displayOther = () => {
     animalsGrid.innerHTML += ""; 
     listOfAnimals.forEach(animal => {
         animalsGrid.innerHTML += `
-        <figure class="animal_item shop-item">
-            <img class="animal_image" src=${animal.image} alt="image of animal">
-            <h2>${animal.name}</h2>
-            <button id="buy-${animal.name}">
-                <div class="icon_container">
-                    <p class="resource_count_text">${animal.priceGold}</p>
-                    <img class="resource_icon" src="images/gold-coin.png">
+        <figure class="shop__grid__item--animal shop__grid__item">
+            <img class="shop__grid__item__image" src=${animal.image} alt="image of animal">
+            <h2 class="shop__grid__item__title">${animal.name}</h2>
+            <button class="item__button" id="buy-${animal.name}">
+                <div class="item__button__price">
+                    <p class="button__price__text">${animal.priceGold}</p>
+                    <img class="button__price__icon" src="images/gold-coin.png">
                 </div>
             </button>
         </figure>
@@ -104,19 +104,19 @@ const displayOther = () => {
     machinesGrid.innerHTML += "";
     listOfMachines.forEach(machine => {
         machinesGrid.innerHTML += `
-        <figure class="machine_item shop-item">
-            <img class="machine_image" src=${machine.image} alt="image of machine">
-            <h2>${machine.name}</h2>
-            <button id="buy-${machine.name}">
-                <div class="icon_container">
-                    <p class="metal_text resource_count_text">${machine.price.metal}</p>
-                    <img class="metal_icon resource_icon" src="images/metal.png">
+        <figure class="shop__grid__item--machine shop__grid__item">
+            <img class="shop__grid__item__image" src=${machine.image} alt="image of machine">
+            <h2 class="shop__grid__item__title">${machine.name}</h2>
+            <button class="item__button" id="buy-${machine.name}">
+                <div class="item__button__price">
+                    <p class="button__price__text button__price__text--metal">${machine.price.metal}</p>
+                    <img class="button__price__icon button__price__icon--metal" src="images/metal.png">
 
-                    <p class="gold_text resource_count_text">${machine.price.gold}</p>
-                    <img class="gold_icon resource_icon" src="images/gold-coin.png">
+                    <p class="button__price__text button__price__text--gold">${machine.price.gold}</p>
+                    <img class="button__price__icon button__price__icon--gold" src="images/gold-coin.png">
                     
-                    <p class="wood_text resource_count_text">${machine.price.wood}</p>
-                    <img class="wood_icon resource_icon" src="images/wood.png">
+                    <p class="button__price__text button__price__text--wood">${machine.price.wood}</p>
+                    <img class="button__price__icon button__price__icon--wood" src="images/wood.png">
                 </div>
             </button>
         </figure>
