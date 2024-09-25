@@ -132,11 +132,10 @@ body{
             margin: 20px;
             box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
         }
-
-        .resources__places__image--mines:hover{
+        .resources__places__image--mines{
             cursor: url(../images/pickaxe-cursor.png), auto;
         }
-        .resources__places__image--woods:hover{
+        .resources__places__image--woods{
             cursor: url(../images/axe-cursor.png), auto;
         }
     }
