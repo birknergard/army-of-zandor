@@ -176,6 +176,7 @@ body{
             border: 1px ridge goldenrod;
             box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.186);
 
+            /* Adds slight margin between icon and text for the buy machines buttons */
             .item__button__price>.button__price__icon{
                 padding: 0px;
                 padding-left: 5px;
@@ -305,11 +306,8 @@ body{
                     margin-right: 15px;
                 }
             }
+        }
     }
-
-        
-    }
-
 }
 
 /* your_army.html  */

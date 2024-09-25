@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 woods.addEventListener("click", () => {
-    Data.generateWood(Random.range(20, 75));
+    Data.generateWood(Random.range(10, 75));
     updateCountDisplay(listOfResourceElements);
 
 })
@@ -23,10 +23,10 @@ woods.addEventListener("click", () => {
 mines.addEventListener("click", () => {
     let randomNumber = Random.range(1, 4);
         if(randomNumber === 1) {
-            Data.generateGold(2000); 
+            Data.generateGold(50); 
             updateCountDisplay(listOfResourceElements);
         } else {
-            Data.generateMetal(500);
+            Data.generateMetal(25);
             updateCountDisplay(listOfResourceElements);
         }
     }
