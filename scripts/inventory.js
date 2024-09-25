@@ -17,7 +17,7 @@ const displayYourWarriors = () => {
 
     listOfWarriors.forEach(warrior => {
         warriorsGrid.innerHTML +=
-       `<img class="warrior" src=${warrior.image} alt="image of warrior">` 
+       `<div class="warrior"><img class="warrior_image" src=${warrior.image} alt="image of warrior"></div>` 
     });
 }
 
@@ -29,7 +29,7 @@ const displayYourAnimals_Machines = () => {
 
     listOfOthers.forEach(other => {
         othersGrid.innerHTML +=
-        `<img class="other" src=${other.image} alt="image of other">`
+        `<div class="other"><img class="other_image" src=${other.image} alt="image of other"></div>`
     })
 }
 
