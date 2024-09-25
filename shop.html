@@ -6,53 +6,52 @@
     <title>Gathering Army</title>
     <link rel="stylesheet" href="css/main.css">
     <script defer src="scripts/shop.js" type="module"></script>
-
 </head>
 <body>
     <header class="header">
-        <h1 class="title">ArmiesOfZondor</h1>
-        <aside class="user_resources">
-            <div class="icon_container">
-                <img class="resource_icon" src="images/metal.png" alt="metal icon">
-                <p id="metal_count" class="resource_count_text metal_text">0</p>   
+        <h1 class="header__title">ArmiesOfZondor</h1>
+        <aside class="header__resources">
+            <div class="header__resource">
+                <img class="header__resource__icon" src="images/metal.png" alt="metal icon">
+                <p class="header__resource__text header__resource__text--metal" id="metal_count">0</p>   
             </div>
 
-            <div class="icon_container">
-                <img id="gold-coin_icon" class="resource_icon" src="images/gold-coin.png" alt="gold icon">
-                <p id="gold-coin_count" class="resource_count_text gold_text">0</p>
+            <div class="header__resource">
+                <img class="header__resource__icon" src="images/gold-coin.png" alt="gold icon">
+                <p class="header__resource__text header__resource__text--gold" id="gold_icon">0</p>   
             </div>
 
-            <div class="icon_container">
-                <img class="resource_icon" src="images/wood.png" alt="wood icon">
-                <p id="wood_count" class="resource_count_text wood_text">0</p>
+            <div class="header__resource">
+                <img class="header__resource__icon" src="images/wood.png" alt="wood icon">
+                <p class="header__resource__text header__resource__text--wood" id="wood_count">0</p>
             </div>
         </aside>
-        <nav class="nav-bar">
-            <a class="nav-bar_button nav_inventory" href="shop.html">Shop</a>
-            <a class="nav-bar_button nav_resources" href="resources.html">Resources</a>
-            <a class="nav-bar_button nav_inventory" href="inventory.html">Inventory</a>
-       </nav>
+        <nav class="header__nav-bar">
+            <a class="header__nav-bar__button header__nav-bar__button--shop header__nav-bar__button--active" href="shop.html">Shop</a>
+            <a class="header__nav-bar__button header__nav-bar__button--resources" href="resources.html">Resources</a>
+            <a class="header__nav-bar__button header__nav-bar__button--inventory " href="inventory.html">Inventory</a>
+        </nav>
     </header>
 
 
 
     <main class="shop">
-        <h1 class="description">Gather your army!</h1>
-        <section class="shop_section">
-            <h2 class="shop-titles">Warriors</h2>
-            <div class="warriors_grid">
+        <h1 class="shop__description">Gather your army!</h1>
+        <section class="shop__section">
+            <h2 class="shop__section__titles">Warriors</h2>
+            <div class="shop__section__grid shop__section__grid--warriors">
                 <!-- Warriors are printed here from .js -->
             </div>
         </section>
-        <section class="shop_section">
-            <h2 class="shop-titles">Animals</h2>
-            <div class="animals_grid">
-                <!-- Animals are printedf here from .js -->
+        <section class="shop__section">
+            <h2 class="shop__section__titles">Animals</h2>
+            <div class="shop__section__grid shop__section__grid--animals">
+                <!-- Animals are printed here from .js -->
             </div>
         </section>
-        <section class="shop_section">
-            <h2 class="shop-titles">War Machines</h2>
-            <div class="machines_grid">
+        <section class="shop__section">
+            <h2 class="shop__titles">War Machines</h2>
+            <div class="shop__section_grid shop__section__grid--machines">
                 <!-- Machines are printed here from .js -->
             </div>
         </section>
