@@ -12,7 +12,6 @@ const othersGrid = document.querySelector('#other-inventory');
 
 const displayYourWarriors = () => {
     const listOfWarriors = Inventory.fetchWarriorList();
-    console.log("Warrior list:" + listOfWarriors)  
     warriorsGrid.innerHTML = "";
 
     listOfWarriors.forEach(warrior => {
@@ -23,8 +22,6 @@ const displayYourWarriors = () => {
 
 const displayYourAnimals_Machines = () => {
     const listOfOthers = Inventory.fetchListofOther();
-
-    console.log("Others list:" + listOfOthers)  
     othersGrid.innerHTML = "";
 
     listOfOthers.forEach(other => {
