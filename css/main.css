@@ -128,8 +128,8 @@ body{
 
         .resources__places__image{
             width: 50%;
-            border-radius: 100px;
-            margin: 20px;
+            border-radius: 25px;
+            margin: 10px;
             box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
         }
         .resources__places__image--mines{
@@ -156,7 +156,6 @@ body{
         .shop__section__titles{
             font-size: 25px;
             align-self: flex-start;
-
         }
 
         .shop__grid__item{
@@ -330,7 +329,6 @@ body{
         margin-top: 15px;
     } 
     .inventory__grid{
-        /* Commonalities */
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-gap: 20px;
@@ -338,7 +336,7 @@ body{
         width: 100%;
     }
     .inventory__item{
-        
+       /* Common between grid items */ 
     }
     .inventory__grid--warriors{
 
@@ -359,7 +357,7 @@ body{
         }
     }
     .inventory__grid--others{
-        
+
         .inventory__item--other{
             grid-column: auto / span 3;
             background-color: white;
@@ -381,31 +379,34 @@ body{
 
 @media screen and (max-width: 1200px){
     .inventory{
-        .inventory_warriors{
-            .warrior{
+        .inventory__grid{
+            .inventory__item--warrior{
                 grid-column: auto / span 2;
             }
-        }
-        .inventory_others{
-            .other{
+            .inventory__item--other{
                 grid-column: auto / span 4;
             }
         }
     }
-    .shop{
-        .shop_section{
-            .warriors_grid{
-                .warrior_item{
+    .resources{
+        .resources__places{
+            flex-direction: column;
+            .resources__places__image{
+                width: 90%;
+                border-radius: 10px;
+            }
+        }
+    }
+   .shop{
+        .shop__section{
+            .shop__grid{
+                .shop__grid__item--warrior{
                     grid-column: auto / span 4;
                 }
-            }
-            .animals_grid{
-                .animal_item{
+                .shop__grid__item--animal{
                     grid-column: auto / span 6;
                 }
-            }
-            .machines_grid{
-                .machine_item{
+                .shop__grid__item--machine{
                     grid-column: auto / span 6;
                 }
             }
@@ -416,69 +417,65 @@ body{
 @media screen and (max-width: 850px){
     .header{
         padding: 20px;
-        .title{
+        .header__title{
             display: none;        
         }
 
-        .nav-bar{
-            .nav-bar_button{
+        .header__nav-bar{
+            .header__nav-bar__button{
                 font-size: 20px;
             }
         }
 
-        .icon_container{
-            .resource_count_text{
+        .header__resource{
+            .header__resource__text{
                 font-size: 20px;
             }
         }
     }
 
     .resources{
-        .places{
-            flex-direction: column;
-            .resource_image{
-                width: 90%;
+        .resources__places{
+            .resources__places__image{
+                width: 95%;
+                border-radius: 25px;
             }
         }
+        
     }
     
     .shop{
-        .shop_section{
-            .warriors_grid{
-                .warrior_item{
+        .shop__section{
+            .shop__grid{
+                .shop__grid__item--warrior{
                     grid-column: auto / span 6;
                 }
-            }
-            .animals_grid{
-                .animal_item{
+                .shop__grid__item--animal{
+                    grid-column: auto / span 12;
+                }
+                .shop__grid__item--machine{
                     grid-column: auto / span 12;
                 }
             }
-            .machines_grid{
-                .machine_item{
-                    grid-column: auto / span 12;
-                }
-            }
-        } 
+        }
     }
 
     .inventory{
         margin-left: 30px;
         margin-right: 30px;
 
-        .inventory_warriors{
-            .warrior{
-                grid-column: auto / span 3;
+        .inventory__grid{
+            .inventory__item--warrior{
+                grid-column: auto / span 2;
             }
-        }
 
-        .inventory_others{
-            .other{
-                grid-column: auto / span 6;
+            .inventory__item--other{
+                grid-column: auto / span 4;
             }
         }
     }
 }
+
 @media screen and (max-width: 640px){
     .header{
         padding: 15px;
@@ -492,28 +489,31 @@ body{
        .description{
             display: none;
        } 
-       
+        .resources__places{
+            .resources__places__image{
+                width: 100%;
+                border-radius: 10px;
+            }
+       }
+
         margin-left: 30px;
         margin-right: 30px;
         margin-top: 150px;
-
     }
 
     .shop{
-
         margin-left: 30px;
         margin-right: 30px;
         margin-top: 150px;
 
-        .description{
+        .shop__description{
             display:none;
-            margin-top: 25px;
         }
 
-        .shop_section{
-            .warriors_grid{
-                .warrior_item{
-                    .warrior_image{
+        .shop__section{
+            .shop__grid{
+                .shop__grid__item--warrior{
+                    .shop__grid__item__image--warrior{
                         width: 150px;
                     }
                 }
@@ -522,7 +522,7 @@ body{
     }
 
     .inventory{
-        .inventory_title{
+        .inventory__description{
             display: none;
         }
         
@@ -530,14 +530,14 @@ body{
         margin-right: 30px;
         margin-top: 150px;
 
-        .inventory_warriors{
-            .warrior{
+        .inventory__grid--warriors{
+            .inventory__item--warrior{
                 grid-column: auto / span 4;
             }
         }
 
-        .inventory_others{
-            .other{
+        .inventory__grid--others{
+            .inventory__item--other{
                 grid-column: auto / span 6;
             }
         }
