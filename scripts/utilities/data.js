@@ -39,41 +39,25 @@ export const Data = {
         localStorage.setItem('resources', JSON.stringify(resourceList));
     },
 
-    subtractGold: amount => {
+    subtractResourceFromLocalStorage: (resource, amount) => {
         let resourceList = Data.loadResources();
-            
-        if(amount > resourceList.gold) { console.log("Too few resources to subtract.") 
-            return false; 
-        } else {
-            console.log("subtracting gold...")
-            resourceList.gold -= amount;
-            localStorage.setItem('resources', JSON.stringify(resourceList));
-            return true;
-        }
+
+        if(amount <= resourceList.resource){
+            resourseList.resource -= amount;
+            localStorage.setItem('resources', JSON.stringify(resourceList))
+        }        
+    },
+
+    subtractGold: amount => {
+        subtractResourceFromLocalStorage(gold, amount);    
     },
     
     subtractMetal: amount => {
-        let resourceList = Data.loadResources();
-            
-        if(amount > resourceList.metal) { console.log("Too few resources to subtract.") 
-            return false; 
-        } else {
-            console.log("subtracting metal...")
-            resourceList.metal -= amount;
-            localStorage.setItem('resources', JSON.stringify(resourceList));
-            return true;
-        }
+        subtractResourceFromLocalStorage(metal, amount);    
     },
 
     subtractWood: amount => {
-        let resourceList = Data.loadResources();
-        if(amount > resourceList.wood) {
-            console.log("Too few resources to subtract.") 
-        } else {
-            console.log("subtracting wood...")
-            resourceList.wood -= amount;
-            localStorage.setItem('resources', JSON.stringify(resourceList));
-        }
+        subtractResourceFromLocalStorage(wood, amount);    
     }
 } 
 
@@ -103,7 +87,6 @@ export const Inventory = {
         }
     },
 
-    // TODO: Create filter for inventory
     fetchWarriorList: () => {
         const unfilteredInventory = Inventory.fetchInventory();  
         const yourWarriors = unfilteredInventory.filter(item => item.image.includes("./images/warrior-"));
