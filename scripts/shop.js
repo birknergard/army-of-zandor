@@ -1,6 +1,6 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
-import { updateCountDisplay, Data, Inventory } from "./utilities/data.js";
+import { updateCountDisplay, Resource, Inventory } from "./utilities/data.js";
 
 const woodCounter = document.querySelector('#wood_count')
 const metalCounter = document.querySelector('#metal_count')
@@ -12,9 +12,9 @@ const animalsGrid = document.querySelector('.shop__grid--animals')
 const machinesGrid = document.querySelector('.shop__grid--machines')
 
 const buyWarrior = warrior => {
-    const gold = Data.loadResources().gold;
+    const gold = Resource.loadResources().gold;
     if(gold >= warrior.priceGold){
-        Data.subtractGold(warrior.priceGold)
+        Resource.subtractGold(warrior.priceGold)
         Inventory.addToInventory(warrior);
         updateCountDisplay(listOfResourceElements)
     }
@@ -46,16 +46,16 @@ const displayWarriors = () => {
 }
 
 const buyAnimal = animal => {
-    const gold = Data.loadResources().gold;
+    const gold = Resource.loadResources().gold;
     if(gold >= animal.priceGold){
-        Data.subtractGold(animal.priceGold);
+        Resource.subtractGold(animal.priceGold);
         Inventory.addToInventory(animal);
         updateCountDisplay(listOfResourceElements);
     }
 } 
     
 const buyMachine = machine => {
-    const resources = Data.loadResources();
+    const resources = Resource.loadResources();
 
     const canBuy = (() => {
         if(resources.gold >= machine.price.gold && resources.metal >= machine.price.metal && resources.wood >= machine.price.wood) { 
@@ -68,9 +68,9 @@ const buyMachine = machine => {
     })()
 
     if(canBuy){
-        Data.subtractGold(machine.price.gold);
-        Data.subtractMetal(machine.price.metal);
-        Data.subtractWood(machine.price.wood);
+        Resource.subtractGold(machine.price.gold);
+        Resource.subtractMetal(machine.price.metal);
+        Resource.subtractWood(machine.price.wood);
             
         Inventory.addToInventory(machine);
             

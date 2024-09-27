@@ -1,4 +1,4 @@
-import { Data } from '../utilities/data.js'
+import { Resource } from '../utilities/data.js'
 const animals= [{
         name: "Elephant",
         priceGold: 400,
@@ -35,16 +35,16 @@ const joinedList = [animals, machines];
 
 const Other = {
     uploadToLocalStorage: () => {
-        Data.uploadToLocalStorage(joinedList, 'other');
+        Resource.uploadToLocalStorage(joinedList, 'other');
     },
 
    fetchAnimalsFromLocalStorage: () => {
-        const list = Data.fetchListFromLocalStorage('other');
+        const list = Resource.fetchListFromLocalStorage('other');
         return list[0];
    },
 
    fetchMachinesFromLocalStorage: () => {
-        const list = Data.fetchListFromLocalStorage('other');
+        const list = Resource.fetchListFromLocalStorage('other');
         return list[1];
    }
 }

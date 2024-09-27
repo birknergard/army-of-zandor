@@ -1,4 +1,4 @@
-export const Data = {
+export const Resource = {
     uploadToLocalStorage: (list, category) => {
         if(localStorage.getItem(category) === null ){
             localStorage.setItem(category, JSON.stringify(list));
@@ -26,13 +26,13 @@ export const Data = {
     },
 
     generateResource: (amount, resource) => {
-        let resourceList = Data.loadResources();
+        let resourceList = Resource.loadResources();
         resourceList[resource] += amount;
         uploadResources(resourceList);
     },
 
     subtractResourceFromLocalStorage: (resource, amount) => {
-        let resourceList = Data.loadResources();
+        let resourceList = Resource.loadResources();
         if(amount <= resourceList[resource]){
             resourceList[resource] -= amount;
             uploadResources(resourceList)
@@ -40,35 +40,35 @@ export const Data = {
     },
 
     generateGold: amount => {
-        Data.generateResource(amount, 'gold');
+        Resource.generateResource(amount, 'gold');
     },
     
     generateMetal: amount => {
-        Data.generateResource(amount, 'metal');
+        Resource.generateResource(amount, 'metal');
     },
     
     generateWood: amount => {
-        Data.generateResource(amount, 'wood');
+        Resource.generateResource(amount, 'wood');
     },
 
 
     subtractGold: amount => {
-        Data.subtractResourceFromLocalStorage('gold', amount);    
+        Resource.subtractResourceFromLocalStorage('gold', amount);    
     },
     
     subtractMetal: amount => {
-        Data.subtractResourceFromLocalStorage('metal', amount);    
+        Resource.subtractResourceFromLocalStorage('metal', amount);    
     },
 
     subtractWood: amount => {
-        Data.subtractResourceFromLocalStorage('wood', amount);    
+        Resource.subtractResourceFromLocalStorage('wood', amount);    
     }
 } 
 
 
 export const updateCountDisplay = (listOfHTMLElements) =>{
-        Data.initializeResources();
-        const listOfResources = Data.loadResources(); 
+        Resource.initializeResources();
+        const listOfResources = Resource.loadResources(); 
         listOfHTMLElements[0].innerHTML = listOfResources.wood; 
         listOfHTMLElements[1].innerHTML = listOfResources.metal;
         listOfHTMLElements[2].innerHTML = listOfResources.gold;
