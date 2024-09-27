@@ -21,43 +21,42 @@ export const Data = {
         return JSON.parse(localStorage.getItem('resources'));    
     },
 
-    generateGold: amount => {
+    generateResource: (amount, resource) => {
         let resourceList = Data.loadResources();
-        resourceList.gold += amount;
+        resourceList[resource] += amount;
         localStorage.setItem('resources', JSON.stringify(resourceList));
+    },
+
+    generateGold: amount => {
+        Data.generateResource(amount, 'gold');
     },
     
     generateMetal: amount => {
-        let resourceList = Data.loadResources();
-        resourceList.metal += amount;
-        localStorage.setItem('resources', JSON.stringify(resourceList));
+        Data.generateResource(amount, 'metal');
     },
     
     generateWood: amount => {
-        let resourceList = Data.loadResources();
-        resourceList.wood += amount;
-        localStorage.setItem('resources', JSON.stringify(resourceList));
+        Data.generateResource(amount, 'wood');
     },
 
     subtractResourceFromLocalStorage: (resource, amount) => {
         let resourceList = Data.loadResources();
-
-        if(amount <= resourceList.resource){
-            resourseList.resource -= amount;
+        if(amount <= resourceList[resource]){
+            resourceList[resource] -= amount;
             localStorage.setItem('resources', JSON.stringify(resourceList))
         }        
     },
 
     subtractGold: amount => {
-        subtractResourceFromLocalStorage(gold, amount);    
+        Data.subtractResourceFromLocalStorage('gold', amount);    
     },
     
     subtractMetal: amount => {
-        subtractResourceFromLocalStorage(metal, amount);    
+        Data.subtractResourceFromLocalStorage('metal', amount);    
     },
 
     subtractWood: amount => {
-        subtractResourceFromLocalStorage(wood, amount);    
+        Data.subtractResourceFromLocalStorage('wood', amount);    
     }
 } 
 
