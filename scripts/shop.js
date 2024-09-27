@@ -1,6 +1,7 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
 import { updateCountDisplay, Resource, Inventory } from "./utilities/data.js";
+import { purchaseAnimation } from "./utilities/dynamics.js";
 
 const woodCounter = document.querySelector('#wood_count')
 const metalCounter = document.querySelector('#metal_count')
@@ -40,7 +41,10 @@ const displayWarriors = () => {
     });
 
     listOfWarriors.forEach(warrior => {
-        document.getElementById(`buy-${warrior.categoryName}`).addEventListener('click', () => buyWarrior(warrior));
+        document.getElementById(`buy-${warrior.categoryName}`).addEventListener('click', (event) => {
+            buyWarrior(warrior);
+            purchaseAnimation(event, './images/gold-coin.png')            
+        } 
     });
     
 }
