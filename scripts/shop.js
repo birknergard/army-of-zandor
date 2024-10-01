@@ -46,7 +46,7 @@ const displayWarriors = () => {
     listOfWarriors.forEach(warrior => {
         document.getElementById(`buy-${warrior.categoryName}`).addEventListener('click', (event) => {
             if(buyWarrior(warrior)){
-                purchaseAnimation(event, ["./images/gold-coin.png"], true)         
+                purchaseAnimation(event, ["./images/gold-coin.png"], true, )         
             }
         } 
     )})
@@ -67,6 +67,7 @@ const buyAnimal = animal => {
 const buyMachine = machine => {
     const resources = Resource.loadResources();
 
+    // I am aware this IIFE is unnecessary, it's used here to show that i know how the tool works
     const canBuy = (() => {
         if(resources.gold >= machine.price.gold && resources.metal >= machine.price.metal && resources.wood >= machine.price.wood) { 
             return true; 

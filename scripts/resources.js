@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 })
 
 woods.addEventListener("click", (event) => {
-    Resource.generateWood(Random.range(10, 75));
-    purchaseAnimation(event, ["./images/wood.png"], false)
+    let randomWoodAmount = Random.range(10, 75)
+    Resource.generateWood(randomWoodAmount);
+    purchaseAnimation(event, ["./images/wood.png"], false, randomWoodAmount)
     updateCountDisplay(listOfResourceElements);
 
 })
@@ -25,14 +26,14 @@ woods.addEventListener("click", (event) => {
 mines.addEventListener("click", (event) => {
     let randomNumber = Random.range(1, 4);
         if(randomNumber === 1) {
-            Resource.generateGold(52020); 
+            Resource.generateGold(50); 
             updateCountDisplay(listOfResourceElements); 
-            purchaseAnimation(event, ["./images/gold-coin.png"], false)
+            purchaseAnimation(event, ["./images/gold-coin.png"], false, 50)
 
         } else {
             Resource.generateMetal(25);
             updateCountDisplay(listOfResourceElements);
-            purchaseAnimation(event, ["./images/metal.png"], false)
+            purchaseAnimation(event, ["./images/metal.png"], false, 25)
         }
     }
 )
