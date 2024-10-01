@@ -1,6 +1,6 @@
 import Random from './utilities/random.js';
 import { updateCountDisplay, Resource} from './utilities/data.js';
-import { purchaseAnimation } from "./utilities/dynamics.js";
+import { subtractOrAddResourceAnimation } from "./utilities/dynamics.js";
 
 const woodCounter = document.querySelector('#wood_count');
 const metalCounter = document.querySelector('#metal_count');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 woods.addEventListener("click", (event) => {
     let randomWoodAmount = Random.range(10, 75)
     Resource.generateWood(randomWoodAmount);
-    purchaseAnimation(event, ["./images/wood.png"], false, randomWoodAmount)
+    subtractOrAddResourceAnimation(event, ["./images/wood.png"], false, randomWoodAmount)
     updateCountDisplay(listOfResourceElements);
 
 })
@@ -28,12 +28,12 @@ mines.addEventListener("click", (event) => {
         if(randomNumber === 1) {
             Resource.generateGold(50); 
             updateCountDisplay(listOfResourceElements); 
-            purchaseAnimation(event, ["./images/gold-coin.png"], false, 50)
+            subtractOrAddResourceAnimation(event, ["./images/gold-coin.png"], false, 50)
 
         } else {
             Resource.generateMetal(25);
             updateCountDisplay(listOfResourceElements);
-            purchaseAnimation(event, ["./images/metal.png"], false, 25)
+            subtractOrAddResourceAnimation(event, ["./images/metal.png"], false, 25)
         }
     }
 )

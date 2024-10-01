@@ -26,7 +26,7 @@
 body{
     background-color: #f2f2f2;
 }
-.purchase{
+.animation{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -36,18 +36,18 @@ body{
     opacity: 1;
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 
-    .purchase__text{
+    .animation__text{
         font-size: 25px;
         margin-right: 5px;
     }
-    .purchase__symbol{
+    .animation__symbol{
         font-size: 25px;
     } 
-    .purchase__image{
+    .animation__image{
         width: 25px;
     }
 
-    .purchase__text--failed{
+    .animation__text--failed{
         color: red;
         font-size: 15px;
     }   

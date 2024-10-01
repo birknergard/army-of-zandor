@@ -1,26 +1,26 @@
-export const purchaseAnimation = (event, iconArray, isLosingResource, amount) => {
+export const subtractOrAddResourceAnimation = (event, iconArray, isLosingResource, amount) => {
     if(!Array.isArray(amount)) {
        amount = [amount];
     }
     // Removes previous animation if is hasnt been removed already 
-    const existingAnim = document.querySelector('.purchase');
+    const existingAnim = document.querySelector('.animation');
     if(existingAnim){
         document.body.removeChild(existingAnim)
     }
 
     const animationElm = document.createElement('div');
-    animationElm.className = 'purchase';
+    animationElm.className = 'animation';
     for(let i = 0; i < iconArray.length; i++){
         if(isLosingResource) {
             animationElm.innerHTML += `
-            <p style="color:red;" class="purchase__symbol">-</p>
-            <p style="color:red;" class="purchase__text">${amount[i]}</p>
-            <img class="purchase__image" src="${iconArray[i]}">`;
+            <p style="color:red;" class="animation__symbol">-</p>
+            <p style="color:red;" class="animation__text">${amount[i]}</p>
+            <img class="animation__image" src="${iconArray[i]}">`;
         } else {
             animationElm.innerHTML += `
-            <p style="color:yellowgreen;" class="purchase__symbol">+</p>
-            <p style="color:yellowgreen;" class="purchase__text">${amount[i]}</p>
-            <img class="purchase__image" src="${iconArray[i]}">`;
+            <p style="color:yellowgreen;" class="animation__symbol">+</p>
+            <p style="color:yellowgreen;" class="animation__text">${amount[i]}</p>
+            <img class="animation__image" src="${iconArray[i]}">`;
         }
     }
 
@@ -51,8 +51,8 @@ export const lackingResourcesAnimation = (event) => {
     }
 
     const animationElm = document.createElement('div');
-    animationElm.className = 'purchase';
-    animationElm.innerHTML = `<p class="purchase__text--failed">insufficient<br>resources</p>`
+    animationElm.className = 'animation';
+    animationElm.innerHTML = `<p class="animation__text--failed">insufficient<br>resources</p>`
 
     animationElm.style.top = `${event.pageY - 7.5}px`;
     animationElm.style.left = `${event.pageX + 15}px`; 
