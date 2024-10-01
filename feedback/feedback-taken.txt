@@ -1,0 +1,29 @@
+Positive ting
+
+    1. God bruk av Semantisk koding: Du har brukt semantisk koding, blant annet
+    main, section, aside og header, som gjør strukturen på koden bedre.
+    
+    2. Pen layout: Sidene er laget på en fin og strukturert måte, med bruk av grid for
+    kjøp av både krigerene, dyrene og maskinene.
+    
+    3. Brukte bare en styling sheet med navn som gir mening: Godt strukturert css
+    stylesheet med navn som forklarer hva de blir brukt til.
+    
+    4. Ryddig JS koding: Javascript delen er ryddig og godt strukturert, i tillegg til at du
+    bruker moduler for lagre krigerene, dyrene og maskinene i localStorage. Veldig
+    bra.
+
+
+Forbedrings område / tips
+
+    1. Lagre script i header istaden for body: I lagre script taggen i header kan noen
+    ganger skape problem (eg opplevde det når eg skulle vurdera koden). Å legge
+    script taggen i bodyen er ofte et bedre alternativ. Viss du velger å bruke script i
+    head taggen, er det anbefalt å legge til defer i script taggen, som sørger for at
+    Javascript fila, blir lasta paralelt paralellt med HTML fila.
+
+    2. Mangel på søkefelt: Selv om det kanskje ikke er et krav, hadde det vært litt nice å
+    hatt et søkefelt på siden
+
+    3. Kommentarer: Selv om koden er godt skrevet og ryddig, kan det hjelpe å ha med
+    kommentarer for ekstra context

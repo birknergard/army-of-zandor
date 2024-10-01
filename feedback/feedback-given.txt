@@ -1,0 +1,10 @@
+Feedback for your-army.js& 
+
+Good
+1. If statements are used sparingly.
+2. Creation of army is dynamic which is good.
+3. Easily readable. 
+
+1. A lot of repeated code.
+2. Very large functions, can be broken down into smaller ones. 
+3. Should use .filter() method on for finding filtered warriors. 
