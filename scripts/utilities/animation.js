@@ -1,3 +1,4 @@
+
 export const subtractOrAddResourceAnimation = (event, iconArray, isLosingResource, amount) => {
     if(!Array.isArray(amount)) {
        amount = [amount];
@@ -31,13 +32,13 @@ export const subtractOrAddResourceAnimation = (event, iconArray, isLosingResourc
     document.body.appendChild(animationElm);
 
     setTimeout(() => {
-        animationElm.style.opacity = 1;
+        animationElm.style.opacity = 0;
         animationElm.style.transform = 'translateY(-40px)';
         }, 10);
 
     setTimeout(() => {
         if(animationElm && animationElm.parentElement){
-            //document.body.removeChild(animationElm);
+            document.body.removeChild(animationElm);
         }
     }, 1500);
 }
@@ -45,7 +46,7 @@ export const subtractOrAddResourceAnimation = (event, iconArray, isLosingResourc
 export const lackingResourcesAnimation = (event) => {
     
     // Removes previous animation if is hasnt been removed already 
-    const existingAnim = document.querySelector('.purchase');
+    const existingAnim = document.querySelector('.animation');
     if(existingAnim){
         document.body.removeChild(existingAnim)
     }
@@ -60,13 +61,13 @@ export const lackingResourcesAnimation = (event) => {
     document.body.appendChild(animationElm);
 
     setTimeout(() => {
-        animationElm.style.opacity = 1;
+        animationElm.style.opacity = 0;
         animationElm.style.transform = 'translateY(-40px)';
         }, 10);
 
     setTimeout(() => {
         if(animationElm && animationElm.parentElement){
-            //document.body.removeChild(animationElm);
+            document.body.removeChild(animationElm);
         }
     }, 1500);
 }
