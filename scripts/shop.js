@@ -18,6 +18,9 @@ const buyWarrior = warrior => {
         Resource.subtractGold(warrior.priceGold)
         Inventory.addToInventory(warrior);
         updateCountDisplay(listOfResourceElements)
+        return true;
+    } else {
+        return false;
     }
 }
 
@@ -42,11 +45,11 @@ const displayWarriors = () => {
 
     listOfWarriors.forEach(warrior => {
         document.getElementById(`buy-${warrior.categoryName}`).addEventListener('click', (event) => {
-            buyWarrior(warrior);
-            purchaseAnimation(event, './images/gold-coin.png')            
+            if(buyWarrior(warrior)){
+                purchaseAnimation(event, ["./images/gold-coin.png"], true)         
+            }
         } 
-    });
-    
+    )})
 }
 
 const buyAnimal = animal => {
@@ -55,6 +58,9 @@ const buyAnimal = animal => {
         Resource.subtractGold(animal.priceGold);
         Inventory.addToInventory(animal);
         updateCountDisplay(listOfResourceElements);
+        return true;
+    } else {
+        return false;
     }
 } 
     
@@ -63,12 +69,8 @@ const buyMachine = machine => {
 
     const canBuy = (() => {
         if(resources.gold >= machine.price.gold && resources.metal >= machine.price.metal && resources.wood >= machine.price.wood) { 
-            console.log("BuyMachine: enough for purchase.")
             return true; 
-        } else {                
-            console.log("Not enough resources for purchase.")
-            return false;    
-        }
+        }                
     })()
 
     if(canBuy){
@@ -79,7 +81,8 @@ const buyMachine = machine => {
         Inventory.addToInventory(machine);
             
         updateCountDisplay(listOfResourceElements);
-    }
+    } 
+    return canBuy;
 }
 
 const displayOther = () => {
@@ -101,8 +104,11 @@ const displayOther = () => {
     })
 
     listOfAnimals.forEach(animal => {
-        document.getElementById(`buy-${animal.name}`).addEventListener("click", () => {buyAnimal(animal)})
-    })
+        document.getElementById(`buy-${animal.name}`).addEventListener("click", (event) => {
+            if(buyAnimal(animal)){
+                purchaseAnimation(event, ["./images/gold-coin.png"], true)
+            }
+        })})
 
     const listOfMachines = Other.fetchMachinesFromLocalStorage();
     machinesGrid.innerHTML += "";
@@ -128,8 +134,11 @@ const displayOther = () => {
     })
 
     listOfMachines.forEach(machine => {
-        document.getElementById(`buy-${machine.name}`).addEventListener("click", () => { buyMachine(machine) })
-    })
+        document.getElementById(`buy-${machine.name}`).addEventListener("click", (event) => { 
+            if(buyMachine(machine)){
+                purchaseAnimation(event, ["./images/gold-coin.png", "./images/metal.png", "./images/wood.png"], true)
+            } 
+        })})
 }
 
 document.addEventListener("DOMContentLoaded", () => {
