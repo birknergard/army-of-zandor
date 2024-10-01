@@ -1,6 +1,7 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
 import { updateCountDisplay, Resource, Inventory } from "./utilities/data.js";
+import { subtractOrAddResourceAnimation, lackingResourcesAnimation } from "./utilities/dynamics.js";
 
 const woodCounter = document.querySelector('#wood_count')
 const metalCounter = document.querySelector('#metal_count')
@@ -17,6 +18,9 @@ const buyWarrior = warrior => {
         Resource.subtractGold(warrior.priceGold)
         Inventory.addToInventory(warrior);
         updateCountDisplay(listOfResourceElements)
+        return true;
+    } else {
+        return false;
     }
 }
 
@@ -40,9 +44,14 @@ const displayWarriors = () => {
     });
 
     listOfWarriors.forEach(warrior => {
-        document.getElementById(`buy-${warrior.categoryName}`).addEventListener('click', () => buyWarrior(warrior));
-    });
-    
+        document.getElementById(`buy-${warrior.categoryName}`).addEventListener('click', (event) => {
+            if(buyWarrior(warrior)){
+                subtractOrAddResourceAnimation(event, ["./images/gold-coin.png"], true, warrior.priceGold)
+            } else {
+                lackingResourcesAnimation(event);
+            }
+        })
+    })
 }
 
 const buyAnimal = animal => {
@@ -51,20 +60,21 @@ const buyAnimal = animal => {
         Resource.subtractGold(animal.priceGold);
         Inventory.addToInventory(animal);
         updateCountDisplay(listOfResourceElements);
+        return true;
+    } else {
+        return false;
     }
 } 
     
 const buyMachine = machine => {
+
     const resources = Resource.loadResources();
 
+    // I am aware this IIFE is unnecessary, it's used here to show that i know how the tool works
     const canBuy = (() => {
         if(resources.gold >= machine.price.gold && resources.metal >= machine.price.metal && resources.wood >= machine.price.wood) { 
-            console.log("BuyMachine: enough for purchase.")
             return true; 
-        } else {                
-            console.log("Not enough resources for purchase.")
-            return false;    
-        }
+        }                
     })()
 
     if(canBuy){
@@ -75,7 +85,8 @@ const buyMachine = machine => {
         Inventory.addToInventory(machine);
             
         updateCountDisplay(listOfResourceElements);
-    }
+    } 
+    return canBuy;
 }
 
 const displayOther = () => {
@@ -97,7 +108,13 @@ const displayOther = () => {
     })
 
     listOfAnimals.forEach(animal => {
-        document.getElementById(`buy-${animal.name}`).addEventListener("click", () => {buyAnimal(animal)})
+        document.getElementById(`buy-${animal.name}`).addEventListener("click", (event) => {
+            if(buyAnimal(animal)){
+                subtractOrAddResourceAnimation(event, ["./images/gold-coin.png"], true, animal.priceGold)
+            } else {
+                lackingResourcesAnimation(event);
+            }
+        })
     })
 
     const listOfMachines = Other.fetchMachinesFromLocalStorage();
@@ -122,9 +139,18 @@ const displayOther = () => {
         </figure>
         `        
     })
+    
+    const listOfIconPaths = ["./images/wood.png", "./images/metal.png", "/images/gold-coin.png"];
 
     listOfMachines.forEach(machine => {
-        document.getElementById(`buy-${machine.name}`).addEventListener("click", () => { buyMachine(machine) })
+        document.getElementById(`buy-${machine.name}`).addEventListener("click", (event) => { 
+            const listOfPrices = [machine.price.gold, machine.price.metal, machine.price.wood];
+            if(buyMachine(machine)){
+                subtractOrAddResourceAnimation(event, listOfIconPaths, true, listOfPrices);
+            } else {
+                lackingResourcesAnimation(event);
+            } 
+        })
     })
 }
 

@@ -28,14 +28,14 @@ export const Resource = {
     generateResource: (amount, resource) => {
         let resourceList = Resource.loadResources();
         resourceList[resource] += amount;
-        uploadResources(resourceList);
+        Resource.uploadResources(resourceList);
     },
 
     subtractResourceFromLocalStorage: (resource, amount) => {
         let resourceList = Resource.loadResources();
         if(amount <= resourceList[resource]){
             resourceList[resource] -= amount;
-            uploadResources(resourceList)
+            Resource.uploadResources(resourceList)
         }        
     },
 
