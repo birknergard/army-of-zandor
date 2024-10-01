@@ -1,38 +1,72 @@
 export const purchaseAnimation = (event, iconArray, isLosingResource, amount) => {
-
+    if(!Array.isArray(amount)) {
+       amount = [amount];
+    }
     // Removes previous animation if is hasnt been removed already 
     const existingAnim = document.querySelector('.purchase');
     if(existingAnim){
         document.body.removeChild(existingAnim)
     }
 
-    const animationElm = document.createElement('span');
+    const animationElm = document.createElement('div');
     animationElm.className = 'purchase';
-
-    iconArray.forEach(icon => {
+    for(let i = 0; i < iconArray.length; i++){
         if(isLosingResource) {
-            animationElm.innerHTML += `<span style="color:red;" class="purchase__text">${amount} - </span>
-            <img class="purchase__image" src="${icon}">`;        
+            animationElm.innerHTML += `
+            <p style="color:red;" class="purchase__symbol">-</p>
+            <p style="color:red;" class="purchase__text">${amount[i]}</p>
+            <img class="purchase__image" src="${iconArray[i]}">`;
         } else {
-            animationElm.innerHTML += `<span style="color:yellowgreen;" class="purchase__text">${amount} + </span>
-            <img class="purchase__image" src="${icon}">`;        
+            animationElm.innerHTML += `
+            <p style="color:yellowgreen;" class="purchase__symbol">+</p>
+            <p style="color:yellowgreen;" class="purchase__text">${amount[i]}</p>
+            <img class="purchase__image" src="${iconArray[i]}">`;
         }
-    });
+    }
 
 
-    animationElm.style.top = `${event.pageY - 15}px`;
-    animationElm.style.left = `${event.pageX + 30}px`; 
+    animationElm.style.top = `${event.pageY - 12.5}px`;
+    animationElm.style.left = `${event.pageX + 25}px`; 
 
     document.body.appendChild(animationElm);
 
     setTimeout(() => {
-        animationElm.style.opacity = 0;
+        animationElm.style.opacity = 1;
         animationElm.style.transform = 'translateY(-40px)';
         }, 10);
 
     setTimeout(() => {
         if(animationElm && animationElm.parentElement){
-            document.body.removeChild(animationElm);
+            //document.body.removeChild(animationElm);
+        }
+    }, 1500);
+}
+
+export const lackingResourcesAnimation = (event) => {
+    
+    // Removes previous animation if is hasnt been removed already 
+    const existingAnim = document.querySelector('.purchase');
+    if(existingAnim){
+        document.body.removeChild(existingAnim)
+    }
+
+    const animationElm = document.createElement('div');
+    animationElm.className = 'purchase';
+    animationElm.innerHTML = `<p class="purchase__text--failed">insufficient<br>resources</p>`
+
+    animationElm.style.top = `${event.pageY - 7.5}px`;
+    animationElm.style.left = `${event.pageX + 15}px`; 
+
+    document.body.appendChild(animationElm);
+
+    setTimeout(() => {
+        animationElm.style.opacity = 1;
+        animationElm.style.transform = 'translateY(-40px)';
+        }, 10);
+
+    setTimeout(() => {
+        if(animationElm && animationElm.parentElement){
+            //document.body.removeChild(animationElm);
         }
     }, 1500);
 }

@@ -11,7 +11,7 @@ const mines = document.querySelector('#mines-image');
 const woods = document.querySelector('#woods-image');
 
 // On pageload
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
     updateCountDisplay(listOfResourceElements);
 })
 

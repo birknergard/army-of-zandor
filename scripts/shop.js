@@ -1,7 +1,7 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
 import { updateCountDisplay, Resource, Inventory } from "./utilities/data.js";
-import { purchaseAnimation } from "./utilities/dynamics.js";
+import { purchaseAnimation, lackingResourcesAnimation } from "./utilities/dynamics.js";
 
 const woodCounter = document.querySelector('#wood_count')
 const metalCounter = document.querySelector('#metal_count')
@@ -46,10 +46,12 @@ const displayWarriors = () => {
     listOfWarriors.forEach(warrior => {
         document.getElementById(`buy-${warrior.categoryName}`).addEventListener('click', (event) => {
             if(buyWarrior(warrior)){
-                purchaseAnimation(event, ["./images/gold-coin.png"], true, )         
+                purchaseAnimation(event, ["./images/gold-coin.png"], true, warrior.priceGold)
+            } else {
+                lackingResourcesAnimation(event);
             }
-        } 
-    )})
+        })
+    })
 }
 
 const buyAnimal = animal => {
@@ -65,6 +67,7 @@ const buyAnimal = animal => {
 } 
     
 const buyMachine = machine => {
+
     const resources = Resource.loadResources();
 
     // I am aware this IIFE is unnecessary, it's used here to show that i know how the tool works
@@ -107,9 +110,12 @@ const displayOther = () => {
     listOfAnimals.forEach(animal => {
         document.getElementById(`buy-${animal.name}`).addEventListener("click", (event) => {
             if(buyAnimal(animal)){
-                purchaseAnimation(event, ["./images/gold-coin.png"], true)
+                purchaseAnimation(event, ["./images/gold-coin.png"], true, animal.priceGold)
+            } else {
+                lackingResourcesAnimation(event);
             }
-        })})
+        })
+    })
 
     const listOfMachines = Other.fetchMachinesFromLocalStorage();
     machinesGrid.innerHTML += "";
@@ -133,13 +139,19 @@ const displayOther = () => {
         </figure>
         `        
     })
+    
+    const listOfIconPaths = ["./images/wood.png", "./images/metal.png", "/images/gold-coin.png"];
 
     listOfMachines.forEach(machine => {
         document.getElementById(`buy-${machine.name}`).addEventListener("click", (event) => { 
+            const listOfPrices = [machine.price.gold, machine.price.metal, machine.price.wood];
             if(buyMachine(machine)){
-                purchaseAnimation(event, ["./images/gold-coin.png", "./images/metal.png", "./images/wood.png"], true)
+                purchaseAnimation(event, listOfIconPaths, true, listOfPrices);
+            } else {
+                lackingResourcesAnimation(event);
             } 
-        })})
+        })
+    })
 }
 
 document.addEventListener("DOMContentLoaded", () => {

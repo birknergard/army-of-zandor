@@ -30,19 +30,27 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-items: space-between;
+    justify-items: center;
     position: absolute;
     pointer-events: none;
     opacity: 1;
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+
     .purchase__text{
+        font-size: 25px;
         margin-right: 5px;
-        font-size: 35px;
     }
-    
+    .purchase__symbol{
+        font-size: 25px;
+    } 
     .purchase__image{
-        width: 30px;
+        width: 25px;
     }
+
+    .purchase__text--failed{
+        color: red;
+        font-size: 15px;
+    }   
 }
 /* Styling for Navigation-bar / Header */
 .header{
