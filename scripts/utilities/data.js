@@ -1,4 +1,3 @@
-export const Units = {
     // Uploads unit list to localstorage.
 export const Unit = {
     uploadToLocalStorage: (list, category) => {

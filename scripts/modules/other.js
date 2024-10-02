@@ -1,5 +1,4 @@
 import { Unit } from '../utilities/data.js'
-import { Units } from '../utilities/data.js'
 
 // This module is for containing the object info for animals and machines, so as to not bloat the other .js files.
 
