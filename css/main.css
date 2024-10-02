@@ -175,6 +175,14 @@ body{
     justify-content: center;
     align-items: center;
     
+    .shop__search-bar__not-found{
+        display: none;
+    }
+    .shop__search-bar__input{
+        height: 30px;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
     .shop__section{
         width: var(--shop-grid-width);
 

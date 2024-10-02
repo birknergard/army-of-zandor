@@ -12,16 +12,21 @@ export const Unit = {
     },
 
     searchForUnit: unit => {
-        const listOfWarriors = Unit.fetchListFromLocalStorage('warrior');
+        if(unit == ""){
+            return true;
+        }
+        const listOfWarriors = Unit.fetchListFromLocalStorage('warriors');
         const listOfOthers = Unit.fetchListFromLocalStorage('other');
-        
-        const warriorsFound = listOfWarriors.filter(unit => unit.categoryName.includes(unit)); 
-        const othersFound = listOfOthers.filter(unit => unit.categoryName.includes(unit));
-         
-        const warriorsAndOthersFound = [warriorsFound, othersFound]
-        
-        if(warriorsAndOthersFound.some(unit)){
-            return warriorsAndOthersFound;
+
+        const warriorsFound = listOfWarriors.filter(warrior => warrior.categoryName.includes(unit)); 
+        const animalsFound = listOfOthers[0].filter(animal => animal.name.includes(unit));
+        const machinesFound = listOfOthers[1].filter(machine => machine.name.includes(unit)); 
+
+        // Returns an array of three unit lists
+        const queryResultLists = [warriorsFound, animalsFound, machinesFound]
+          
+        if(!queryResultLists.every(unitList => unitList.length === 0)){
+            return queryResultLists;
         } else {
             return false;
         }

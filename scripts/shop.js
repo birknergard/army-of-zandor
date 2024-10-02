@@ -13,6 +13,7 @@ const searchBar = {
     button: document.querySelector('.shop__search-bar__button')
 }
 
+const listOfSections = document.querySelectorAll('.shop__section') 
 const warriorsGrid = document.querySelector('.shop__grid--warriors');
 const animalsGrid = document.querySelector('.shop__grid--animals')
 const machinesGrid = document.querySelector('.shop__grid--machines')
@@ -29,8 +30,16 @@ const buyWarrior = warrior => {
     }
 }
 
-const displayWarriors = (listOfWarriors) => {
+const displayWarriors = (list) => {
+    let listOfWarriors;
+
+    if(list === undefined){
+        listOfWarriors = Warriors.fetchFromLocalStorage();
+    } else {
+        listOfWarriors = list;
+    }
     warriorsGrid.innerHTML = "";
+
     listOfWarriors.forEach(warrior => {
         warriorsGrid.innerHTML += `
             <figure class="shop__grid__item--warrior shop__grid__item">
@@ -90,8 +99,16 @@ const buyMachine = machine => {
     } 
     return canBuy;
 }
-const displayAnimals = (listOfAnimals) => {
-    animalsGrid.innerHTML += ""; 
+const displayAnimals = (list) => {
+    let listOfAnimals;
+
+    if(list === undefined){
+        listOfAnimals = Other.fetchAnimalsFromLocalStorage()
+    } else {
+        listOfAnimals = list;
+    }
+
+    animalsGrid.innerHTML = ""; 
     listOfAnimals.forEach(animal => {
         animalsGrid.innerHTML += `
         <figure class="shop__grid__item--animal shop__grid__item">
@@ -117,8 +134,17 @@ const displayAnimals = (listOfAnimals) => {
         })
     })
 }
-const displayMachines = (listOfMachines) => {
-    machinesGrid.innerHTML += "";
+const displayMachines = (list) => {
+    let listOfMachines;
+
+    if(list === undefined){
+        listOfMachines = Other.fetchMachinesFromLocalStorage()
+    } else {
+        listOfMachines = list;
+    }
+
+    machinesGrid.innerHTML = "";
+
     listOfMachines.forEach(machine => {
         machinesGrid.innerHTML += `
         <figure class="shop__grid__item--machine shop__grid__item">
@@ -153,8 +179,24 @@ const displayMachines = (listOfMachines) => {
         })
     })
 }
+const toggleSections = (bool) => {
+    if(bool){
+        listOfSections.forEach(section => {
+            section.style.display = 'block';
+        })
+    } else {
+        listOfSections.forEach(section => {
+            section.style.display = 'none';
+        })
+
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    searchBar.input.value = "";
+
     updateCountDisplay(listOfResourceElements);
 
     Warriors.uploadToLocalStorage();
@@ -164,3 +206,52 @@ document.addEventListener("DOMContentLoaded", () => {
     displayAnimals(Other.fetchAnimalsFromLocalStorage());
     displayMachines(Other.fetchMachinesFromLocalStorage());
 })  
+
+const toggleSearchNotFoundText = bool => {
+    if(bool){
+        document.querySelector('.shop__search-bar__not-found').style.display = 'block';
+    } else if(!bool) {
+        console.log("Disabled searchtext.")
+        document.querySelector('.shop__search-bar__not-found').style.display = 'none';
+    } 
+}
+
+searchBar.input.addEventListener("input", () => {
+        let unitsFound = Unit.searchForUnit(searchBar.input.value/*.toLowerCase()*/);
+        console.log(unitsFound);
+        if(unitsFound === true){
+            toggleSearchNotFoundText(false);
+            toggleSections(true);
+
+            displayWarriors();
+            displayAnimals();
+            displayMachines();
+
+        } else if(unitsFound === false){
+            toggleSearchNotFoundText(true);
+            toggleSections(false)
+            document.querySelector('.shop__search-bar__not-found').style.display = 'block'
+            
+        } else {
+            toggleSections(true); 
+            toggleSearchNotFoundText(false);
+
+            if(unitsFound[0] != []){
+                displayWarriors(unitsFound[0]);
+            } else {
+                warriorsGrid.innerHTML = "";
+            }
+
+            if(unitsFound[1] != []){
+                displayAnimals(unitsFound[1]);
+            } else {
+                animalsGrid.innerHTML = "";
+            }
+
+            if(unitsFound[2] != []){
+                displayMachines(unitsFound[2]);
+            } else {
+                machinesGrid.innerHTML = "";
+            }
+        }
+})
