@@ -1,6 +1,6 @@
 import { Random } from './utilities/extras.js';
 import { updateCountDisplay, Resource} from './utilities/data.js';
-import { subtractOrAddResourceAnimation } from "./utilities/dynamics.js";
+import { subtractOrAddResourceAnimation } from "./utilities/animation.js";
 
 const woodCounter = document.querySelector('#wood_count');
 const metalCounter = document.querySelector('#metal_count');

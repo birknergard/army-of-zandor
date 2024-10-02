@@ -1,4 +1,8 @@
 import { Unit } from '../utilities/data.js'
+import { Units } from '../utilities/data.js'
+
+// This module is for containing the object info for animals and machines, so as to not bloat the other .js files.
+
 const animals= [{
         name: "elephant",
         priceGold: 400,
@@ -31,20 +35,24 @@ const machines = [{
         }
     ];
 
+
 const joinedList = [animals, machines];
 
 const Other = {
     uploadToLocalStorage: () => {
         Unit.uploadToLocalStorage(joinedList, 'other');
+        Units.uploadToLocalStorage(joinedList, 'other');
     },
 
    fetchAnimalsFromLocalStorage: () => {
         const list = Unit.fetchListFromLocalStorage('other');
+        const list = Units.fetchListFromLocalStorage('other');
         return list[0];
    },
 
    fetchMachinesFromLocalStorage: () => {
         const list = Unit.fetchListFromLocalStorage('other');
+        const list = Units.fetchListFromLocalStorage('other');
         return list[1];
    }
 }

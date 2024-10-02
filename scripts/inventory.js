@@ -5,8 +5,6 @@ const metalCounter = document.querySelector('#metal_count');
 const goldCounter = document.querySelector('#gold-coin_count');
 const listOfResourceElements = [woodCounter, metalCounter, goldCounter];
 
-/* Code goes here ... */
-
 const warriorsGrid = document.querySelector('#warrior-inventory');
 const othersGrid = document.querySelector('#other-inventory');
 
