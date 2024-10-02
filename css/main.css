@@ -183,8 +183,6 @@ body{
             align-self: flex-start;
         }
 
-        
-
         .shop__grid{
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -325,7 +323,7 @@ body{
     margin-top: var(--top-margin);
 
     .inventory__sub-header{
-        font-size: 25px;
+        font-size: 30px;
         margin-bottom: 5px;
         margin-top: 15px;
     } 
@@ -351,6 +349,7 @@ body{
     }
 
     .inventory__grid--warriors{
+        margin-bottom: 50px;
 
         .inventory__item--warrior{
             background-color: white;
@@ -364,7 +363,7 @@ body{
     }
 
     .inventory__grid--others{
-
+        margin-bottom: 20px;
         .inventory__item--other{
             grid-column: auto / span 3;
             background-color: white;
@@ -489,7 +488,7 @@ body{
     }
 
     .resources{
-       .description{
+       .resources__description{
             display: none;
        } 
         .resources__places{
@@ -525,13 +524,19 @@ body{
     }
 
     .inventory{
-        .inventory__description{
-            display: none;
-        }
-        
+
         margin-left: 30px;
         margin-right: 30px;
         margin-top: 150px;
+
+        .inventory__description{
+            display: none;
+        }
+
+        .inventory__sub-header{
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
         .inventory__grid--warriors{
             .inventory__item--warrior{

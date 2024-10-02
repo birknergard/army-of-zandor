@@ -1,4 +1,6 @@
-import { Resource } from '../utilities/data.js'
+import { Units } from '../utilities/data.js'
+
+// This module is for containing the object info for warriors, so as to not bloat the other .js files.
 const list = [
         {
             categoryName: "Lass",
@@ -34,11 +36,11 @@ const list = [
 
 const Warriors = {
     uploadToLocalStorage: () => {
-        Resource.uploadToLocalStorage(list, 'warriors')
+        Units.uploadToLocalStorage(list, 'warriors')
     },
 
     fetchFromLocalStorage: () => {
-        return Resource.fetchListFromLocalStorage('warriors');
+        return Units.fetchListFromLocalStorage('warriors');
     }    
 }
 

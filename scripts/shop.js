@@ -1,7 +1,7 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
 import { updateCountDisplay, Resource, Inventory } from "./utilities/data.js";
-import { subtractOrAddResourceAnimation, lackingResourcesAnimation } from "./utilities/dynamics.js";
+import { subtractOrAddResourceAnimation, lackingResourcesAnimation } from "./utilities/animation.js";
 
 const woodCounter = document.querySelector('#wood_count')
 const metalCounter = document.querySelector('#metal_count')
