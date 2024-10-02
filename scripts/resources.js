@@ -1,4 +1,4 @@
-import Random from './utilities/random.js';
+import { Random } from './utilities/extras.js';
 import { updateCountDisplay, Resource} from './utilities/data.js';
 import { subtractOrAddResourceAnimation } from "./utilities/animation.js";
 

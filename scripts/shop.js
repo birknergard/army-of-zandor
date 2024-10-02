@@ -1,13 +1,19 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
-import { updateCountDisplay, Resource, Inventory } from "./utilities/data.js";
-import { subtractOrAddResourceAnimation, lackingResourcesAnimation } from "./utilities/animation.js";
+import { capitalizeFirstLetter } from "./utilities/extras.js";
+import { updateCountDisplay, Resource, Inventory, Unit} from "./utilities/data.js";
+import { subtractOrAddResourceAnimation, lackingResourcesAnimation } from "./utilities/dynamics.js";
 
 const woodCounter = document.querySelector('#wood_count')
 const metalCounter = document.querySelector('#metal_count')
 const goldCounter = document.querySelector('#gold-coin_count')
 const listOfResourceElements = [woodCounter, metalCounter, goldCounter]
 
+const searchBar = {
+    input: document.querySelector('.shop__search-bar__input'),
+}
+
+const listOfSections = document.querySelectorAll('.shop__section') 
 const warriorsGrid = document.querySelector('.shop__grid--warriors');
 const animalsGrid = document.querySelector('.shop__grid--animals')
 const machinesGrid = document.querySelector('.shop__grid--machines')
@@ -24,15 +30,21 @@ const buyWarrior = warrior => {
     }
 }
 
-const displayWarriors = () => {
-    const listOfWarriors = Warriors.fetchFromLocalStorage();
+const displayWarriors = (list) => {
+    let listOfWarriors;
 
+    if(list === undefined){
+        listOfWarriors = Warriors.fetchFromLocalStorage();
+    } else {
+        listOfWarriors = list;
+    }
     warriorsGrid.innerHTML = "";
+
     listOfWarriors.forEach(warrior => {
         warriorsGrid.innerHTML += `
             <figure class="shop__grid__item--warrior shop__grid__item">
                 <img class="shop__grid__item__image--warrior" src="${warrior.image}" alt="image of warrior"> 
-                <h2 class="shop__grid__item__title">${warrior.categoryName}</h2>
+                <h2 class="shop__grid__item__title">${capitalizeFirstLetter(warrior.categoryName)}</h2>
                 <button class="item__button" id="buy-${warrior.categoryName}">
                     <div class="item__button__price">
                         <p class="button__price__text">${warrior.priceGold}</p>
@@ -67,7 +79,6 @@ const buyAnimal = animal => {
 } 
     
 const buyMachine = machine => {
-
     const resources = Resource.loadResources();
 
     // I am aware this IIFE is unnecessary, it's used here to show that i know how the tool works
@@ -89,14 +100,22 @@ const buyMachine = machine => {
     return canBuy;
 }
 
-const displayOther = () => {
-    const listOfAnimals = Other.fetchAnimalsFromLocalStorage();
-    animalsGrid.innerHTML += ""; 
+
+const displayAnimals = (list) => {
+    let listOfAnimals;
+
+    if(list === undefined){
+        listOfAnimals = Other.fetchAnimalsFromLocalStorage()
+    } else {
+        listOfAnimals = list;
+    }
+
+    animalsGrid.innerHTML = ""; 
     listOfAnimals.forEach(animal => {
         animalsGrid.innerHTML += `
         <figure class="shop__grid__item--animal shop__grid__item">
             <img class="shop__grid__item__image" src=${animal.image} alt="image of animal">
-            <h2 class="shop__grid__item__title">${animal.name}</h2>
+            <h2 class="shop__grid__item__title">${capitalizeFirstLetter(animal.name)}</h2>
             <button class="item__button" id="buy-${animal.name}">
                 <div class="item__button__price">
                     <p class="button__price__text">${animal.priceGold}</p>
@@ -116,14 +135,25 @@ const displayOther = () => {
             }
         })
     })
+}
 
-    const listOfMachines = Other.fetchMachinesFromLocalStorage();
-    machinesGrid.innerHTML += "";
+
+const displayMachines = (list) => {
+    let listOfMachines;
+
+    if(list === undefined){
+        listOfMachines = Other.fetchMachinesFromLocalStorage()
+    } else {
+        listOfMachines = list;
+    }
+
+    machinesGrid.innerHTML = "";
+
     listOfMachines.forEach(machine => {
         machinesGrid.innerHTML += `
         <figure class="shop__grid__item--machine shop__grid__item">
             <img class="shop__grid__item__image" src=${machine.image} alt="image of machine">
-            <h2 class="shop__grid__item__title">${machine.name}</h2>
+            <h2 class="shop__grid__item__title">${capitalizeFirstLetter(machine.name)}</h2>
             <button class="item__button" id="buy-${machine.name}">
                 <div class="item__button__price">
                     <p class="button__price__text button__price__text--metal">${machine.price.metal}</p>
@@ -153,13 +183,77 @@ const displayOther = () => {
         })
     })
 }
+const toggleSections = (bool) => {
+    if(bool){
+        listOfSections.forEach(section => {
+            section.style.display = 'block';
+        })
+    } else {
+        listOfSections.forEach(section => {
+            section.style.display = 'none';
+        })
+
+    }
+}
+
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    searchBar.input.value = "";
+
     updateCountDisplay(listOfResourceElements);
 
     Warriors.uploadToLocalStorage();
-    displayWarriors();
+    displayWarriors(Warriors.fetchFromLocalStorage());
 
     Other.uploadToLocalStorage();
-    displayOther();
+    displayAnimals(Other.fetchAnimalsFromLocalStorage());
+    displayMachines(Other.fetchMachinesFromLocalStorage());
 })  
+
+const toggleSearchNotFoundText = bool => {
+    if(bool){
+        document.querySelector('.shop__search-bar__not-found').style.display = 'block';
+    } else if(!bool) {
+        document.querySelector('.shop__search-bar__not-found').style.display = 'none';
+    } 
+}
+
+searchBar.input.addEventListener("input", () => {
+        let unitsFound = Unit.searchForUnit(searchBar.input.value.toLowerCase());
+        if(unitsFound === true){
+            toggleSearchNotFoundText(false);
+            toggleSections(true);
+
+            displayWarriors();
+            displayAnimals();
+            displayMachines();
+
+        } else if(unitsFound === false){
+            toggleSearchNotFoundText(true);
+            toggleSections(false)
+            document.querySelector('.shop__search-bar__not-found').style.display = 'block'
+            
+        } else {
+            toggleSections(true); 
+            toggleSearchNotFoundText(false);
+
+            if(unitsFound[0] != []){
+                displayWarriors(unitsFound[0]);
+            } else {
+                warriorsGrid.innerHTML = "";
+            }
+
+            if(unitsFound[1] != []){
+                displayAnimals(unitsFound[1]);
+            } else {
+                animalsGrid.innerHTML = "";
+            }
+
+            if(unitsFound[2] != []){
+                displayMachines(unitsFound[2]);
+            } else {
+                machinesGrid.innerHTML = "";
+            }
+        }
+})

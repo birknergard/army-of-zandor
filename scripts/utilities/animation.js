@@ -1,14 +1,17 @@
 
 export const subtractOrAddResourceAnimation = (event, iconArray, isLosingResource, amount) => {
+    // Checks if "amount" argument is an array, nests itself in array if not.
     if(!Array.isArray(amount)) {
        amount = [amount];
     }
+
     // Removes previous animation if is hasnt been removed already 
     const existingAnim = document.querySelector('.animation');
     if(existingAnim){
         document.body.removeChild(existingAnim)
     }
 
+    // 
     const animationElm = document.createElement('div');
     animationElm.className = 'animation';
     for(let i = 0; i < iconArray.length; i++){

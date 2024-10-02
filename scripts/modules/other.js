@@ -1,21 +1,21 @@
-import { Units } from '../utilities/data.js'
+import { Unit } from '../utilities/data.js'
 
 // This module is for containing the object info for animals and machines, so as to not bloat the other .js files.
 
 const animals= [{
-        name: "Elephant",
+        name: "elephant",
         priceGold: 400,
         image: '../images/elephant.png'
     },
     {
-        name: "Horse",
+        name: "horse",
         priceGold: 200,
         image: '../images/horse.png'
     }
     ];
 
 const machines = [{
-        name: "Catapult",
+        name: "catapult",
         price: {
             gold: 150,
             metal: 300,
@@ -24,7 +24,7 @@ const machines = [{
         image: '../images/catapult.png'
         },
         {
-        name: "Cannon",
+        name: "cannon",
         price: {
             gold: 200,
             metal: 500,
@@ -39,15 +39,18 @@ const joinedList = [animals, machines];
 
 const Other = {
     uploadToLocalStorage: () => {
+        Unit.uploadToLocalStorage(joinedList, 'other');
         Units.uploadToLocalStorage(joinedList, 'other');
     },
 
    fetchAnimalsFromLocalStorage: () => {
+        const list = Unit.fetchListFromLocalStorage('other');
         const list = Units.fetchListFromLocalStorage('other');
         return list[0];
    },
 
    fetchMachinesFromLocalStorage: () => {
+        const list = Unit.fetchListFromLocalStorage('other');
         const list = Units.fetchListFromLocalStorage('other');
         return list[1];
    }

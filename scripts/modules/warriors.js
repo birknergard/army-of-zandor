@@ -3,32 +3,32 @@ import { Units } from '../utilities/data.js'
 // This module is for containing the object info for warriors, so as to not bloat the other .js files.
 const list = [
         {
-            categoryName: "Lass",
+            categoryName: "lass",
             priceGold: 150,
             image: '../images/warrior-1.jpg'
         },
         {
-            categoryName: "Giant",
+            categoryName: "giant",
             priceGold: 300,
             image: '../images/warrior-2.jpg'
         },
         {
-            categoryName: "Mercenary",
+            categoryName: "mercenary",
             priceGold: 200,
             image: '../images/warrior-3.jpg'
         },
         {
-            categoryName: "Bandit",
+            categoryName: "bandit",
             priceGold: 100,
             image: '../images/warrior-4.jpg'
         },
         {
-            categoryName: "Viking",
+            categoryName: "viking",
             priceGold: 200,
             image: '../images/warrior-5.jpg'
         },
         {
-            categoryName: "Berserker",
+            categoryName: "berserker",
             priceGold: 350,
             image: '../images/warrior-6.jpg'
         }
