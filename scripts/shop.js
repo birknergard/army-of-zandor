@@ -24,9 +24,7 @@ const buyWarrior = warrior => {
     }
 }
 
-const displayWarriors = () => {
-    const listOfWarriors = Warriors.fetchFromLocalStorage();
-
+const displayWarriors = (listOfWarriors) => {
     warriorsGrid.innerHTML = "";
     listOfWarriors.forEach(warrior => {
         warriorsGrid.innerHTML += `
@@ -88,9 +86,7 @@ const buyMachine = machine => {
     } 
     return canBuy;
 }
-
-const displayOther = () => {
-    const listOfAnimals = Other.fetchAnimalsFromLocalStorage();
+const displayAnimals = (listOfAnimals) => {
     animalsGrid.innerHTML += ""; 
     listOfAnimals.forEach(animal => {
         animalsGrid.innerHTML += `
@@ -116,8 +112,8 @@ const displayOther = () => {
             }
         })
     })
-
-    const listOfMachines = Other.fetchMachinesFromLocalStorage();
+}
+const displayMachines = (listOfMachines) => {
     machinesGrid.innerHTML += "";
     listOfMachines.forEach(machine => {
         machinesGrid.innerHTML += `
@@ -158,8 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCountDisplay(listOfResourceElements);
 
     Warriors.uploadToLocalStorage();
-    displayWarriors();
+    displayWarriors(Warriors.fetchFromLocalStorage());
 
     Other.uploadToLocalStorage();
-    displayOther();
+    displayAnimals(Other.fetchAnimalsFromLocalStorage());
+    displayMachines(Other.fetchMachinesFromLocalStorage());
 })  
