@@ -1,4 +1,4 @@
-export const Resource = {
+export const Unit = {
     uploadToLocalStorage: (list, category) => {
         if(localStorage.getItem(category) === null ){
             localStorage.setItem(category, JSON.stringify(list));
@@ -10,6 +10,24 @@ export const Resource = {
             return JSON.parse(localStorage.getItem(category));
         }
     },
+
+    searchForUnit: unit => {
+        const listOfWarriors = Unit.fetchListFromLocalStorage('warrior');
+        const listOfOthers = Unit.fetchListFromLocalStorage('other');
+        
+        const warriorsFound = listOfWarriors.filter(unit => unit.categoryName.includes(unit)); 
+        const othersFound = listOfOthers.filter(unit => unit.categoryName.includes(unit));
+         
+        const warriorsAndOthersFound = [warriorsFound, othersFound]
+        
+        if(warriorsAndOthersFound.some(unit)){
+            return warriorsAndOthersFound;
+        } else {
+            return false;
+        }
+    }
+}
+export const Resource = {
 
     initializeResources: () => {
         if(localStorage.getItem('resources') === null){

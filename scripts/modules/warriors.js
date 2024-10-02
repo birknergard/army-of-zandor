@@ -1,4 +1,4 @@
-import { Resource } from '../utilities/data.js'
+import { Unit } from '../utilities/data.js'
 const list = [
         {
             categoryName: "Lass",
@@ -34,11 +34,11 @@ const list = [
 
 const Warriors = {
     uploadToLocalStorage: () => {
-        Resource.uploadToLocalStorage(list, 'warriors')
+        Unit.uploadToLocalStorage(list, 'warriors')
     },
 
     fetchFromLocalStorage: () => {
-        return Resource.fetchListFromLocalStorage('warriors');
+        return Unit.fetchListFromLocalStorage('warriors');
     }    
 }
 

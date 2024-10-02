@@ -1,12 +1,17 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
-import { updateCountDisplay, Resource, Inventory } from "./utilities/data.js";
+import { updateCountDisplay, Resource, Inventory, Unit} from "./utilities/data.js";
 import { subtractOrAddResourceAnimation, lackingResourcesAnimation } from "./utilities/dynamics.js";
 
 const woodCounter = document.querySelector('#wood_count')
 const metalCounter = document.querySelector('#metal_count')
 const goldCounter = document.querySelector('#gold-coin_count')
 const listOfResourceElements = [woodCounter, metalCounter, goldCounter]
+
+const searchBar = {
+    input: document.querySelector('.shop__search-bar__input'),
+    button: document.querySelector('.shop__search-bar__button')
+}
 
 const warriorsGrid = document.querySelector('.shop__grid--warriors');
 const animalsGrid = document.querySelector('.shop__grid--animals')
@@ -65,7 +70,6 @@ const buyAnimal = animal => {
 } 
     
 const buyMachine = machine => {
-
     const resources = Resource.loadResources();
 
     // I am aware this IIFE is unnecessary, it's used here to show that i know how the tool works
