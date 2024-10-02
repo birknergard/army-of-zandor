@@ -34,13 +34,13 @@ export const subtractOrAddResourceAnimation = (event, iconArray, isLosingResourc
     document.body.appendChild(animationElm);
 
     setTimeout(() => {
-        animationElm.style.opacity = 1;
+        animationElm.style.opacity = 0;
         animationElm.style.transform = 'translateY(-40px)';
         }, 10);
 
     setTimeout(() => {
         if(animationElm && animationElm.parentElement){
-            //document.body.removeChild(animationElm);
+            document.body.removeChild(animationElm);
         }
     }, 1500);
 }

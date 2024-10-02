@@ -1,5 +1,6 @@
 import Warriors from "./modules/warriors.js";
 import Other from './modules/other.js'
+import { capitalizeFirstLetter } from "./utilities/extras.js";
 import { updateCountDisplay, Resource, Inventory, Unit} from "./utilities/data.js";
 import { subtractOrAddResourceAnimation, lackingResourcesAnimation } from "./utilities/dynamics.js";
 
@@ -10,7 +11,6 @@ const listOfResourceElements = [woodCounter, metalCounter, goldCounter]
 
 const searchBar = {
     input: document.querySelector('.shop__search-bar__input'),
-    button: document.querySelector('.shop__search-bar__button')
 }
 
 const listOfSections = document.querySelectorAll('.shop__section') 
@@ -44,7 +44,7 @@ const displayWarriors = (list) => {
         warriorsGrid.innerHTML += `
             <figure class="shop__grid__item--warrior shop__grid__item">
                 <img class="shop__grid__item__image--warrior" src="${warrior.image}" alt="image of warrior"> 
-                <h2 class="shop__grid__item__title">${warrior.categoryName}</h2>
+                <h2 class="shop__grid__item__title">${capitalizeFirstLetter(warrior.categoryName)}</h2>
                 <button class="item__button" id="buy-${warrior.categoryName}">
                     <div class="item__button__price">
                         <p class="button__price__text">${warrior.priceGold}</p>
@@ -99,6 +99,8 @@ const buyMachine = machine => {
     } 
     return canBuy;
 }
+
+
 const displayAnimals = (list) => {
     let listOfAnimals;
 
@@ -113,7 +115,7 @@ const displayAnimals = (list) => {
         animalsGrid.innerHTML += `
         <figure class="shop__grid__item--animal shop__grid__item">
             <img class="shop__grid__item__image" src=${animal.image} alt="image of animal">
-            <h2 class="shop__grid__item__title">${animal.name}</h2>
+            <h2 class="shop__grid__item__title">${capitalizeFirstLetter(animal.name)}</h2>
             <button class="item__button" id="buy-${animal.name}">
                 <div class="item__button__price">
                     <p class="button__price__text">${animal.priceGold}</p>
@@ -134,6 +136,8 @@ const displayAnimals = (list) => {
         })
     })
 }
+
+
 const displayMachines = (list) => {
     let listOfMachines;
 
@@ -149,7 +153,7 @@ const displayMachines = (list) => {
         machinesGrid.innerHTML += `
         <figure class="shop__grid__item--machine shop__grid__item">
             <img class="shop__grid__item__image" src=${machine.image} alt="image of machine">
-            <h2 class="shop__grid__item__title">${machine.name}</h2>
+            <h2 class="shop__grid__item__title">${capitalizeFirstLetter(machine.name)}</h2>
             <button class="item__button" id="buy-${machine.name}">
                 <div class="item__button__price">
                     <p class="button__price__text button__price__text--metal">${machine.price.metal}</p>
@@ -211,14 +215,12 @@ const toggleSearchNotFoundText = bool => {
     if(bool){
         document.querySelector('.shop__search-bar__not-found').style.display = 'block';
     } else if(!bool) {
-        console.log("Disabled searchtext.")
         document.querySelector('.shop__search-bar__not-found').style.display = 'none';
     } 
 }
 
 searchBar.input.addEventListener("input", () => {
-        let unitsFound = Unit.searchForUnit(searchBar.input.value/*.toLowerCase()*/);
-        console.log(unitsFound);
+        let unitsFound = Unit.searchForUnit(searchBar.input.value.toLowerCase());
         if(unitsFound === true){
             toggleSearchNotFoundText(false);
             toggleSections(true);

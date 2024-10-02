@@ -1,18 +1,18 @@
 import { Unit } from '../utilities/data.js'
 const animals= [{
-        name: "Elephant",
+        name: "elephant",
         priceGold: 400,
         image: '../images/elephant.png'
     },
     {
-        name: "Horse",
+        name: "horse",
         priceGold: 200,
         image: '../images/horse.png'
     }
     ];
 
 const machines = [{
-        name: "Catapult",
+        name: "catapult",
         price: {
             gold: 150,
             metal: 300,
@@ -21,7 +21,7 @@ const machines = [{
         image: '../images/catapult.png'
         },
         {
-        name: "Cannon",
+        name: "cannon",
         price: {
             gold: 200,
             metal: 500,
